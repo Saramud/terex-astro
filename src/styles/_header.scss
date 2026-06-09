@@ -1,0 +1,218 @@
+@use 'sass:color';
+
+// ---- Icons in header/footer context ----
+.icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+
+  &:before {
+    font-family: 'icomoon';
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    font-size: 22px;
+    color: $main-color;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    color: $main-color;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $main-color;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+.icon-phone:before {
+  content: '\e942';
+}
+.icon-mail:before {
+  content: '\e945';
+}
+.icon-address:before {
+  content: '\e947';
+  color: $gray-muted;
+}
+.icon-telegram:before {
+  content: '\ea95';
+  color: $color-telegram;
+}
+.icon-whatsapp:before {
+  content: '\ea93';
+  color: $color-whatsapp;
+}
+.icon-clock:before {
+  content: '\e94e';
+}
+
+// ---- Header button (Отправить заявку) ----
+.header_button {
+  cursor: pointer;
+  padding: 6px 14px;
+  background-color: $main-color;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  color: $black !important;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $main-color-dark;
+  }
+}
+
+// ---- Logo ----
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: $black;
+
+  a {
+    display: contents;
+    color: inherit;
+  }
+
+  img {
+    width: 70px;
+    flex-shrink: 0;
+  }
+}
+
+.logo_name {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+
+  .sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: none;
+    color: $gray;
+  }
+}
+
+// ---- Info block (phone + button) ----
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+// ---- Inner page header (header.pug template) ----
+.header_template {
+  background-color: $white;
+  border-bottom: 3px solid $main-color;
+  padding: 12px 0 0;
+
+  .logo img {
+    width: 70px;
+  }
+
+  .info {
+    align-items: center;
+  }
+
+  .logo img {
+    width: 55px;
+  }
+
+  @media (min-width: $bp-sm) {
+    .logo img {
+      width: 70px;
+    }
+  }
+}
+
+// ---- Index page hero header ----
+header#header.header {
+  background-color: $white;
+  padding-top: 12px;
+
+  > .container {
+    border-bottom: 3px solid $main-color;
+    padding-bottom: 0;
+  }
+}
+
+.header__phone {
+  background-color: $black;
+  color: $white;
+  padding: 24px 0;
+  position: relative;
+  overflow: hidden;
+
+  .phone {
+    position: relative;
+    z-index: 2;
+
+    h1 {
+      font-size: clamp(18px, 3vw, 32px);
+      font-weight: 700;
+      color: $white;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    a {
+      display: inline-block;
+      font-size: clamp(22px, 4vw, 40px);
+      font-weight: 700;
+      color: $main-color;
+      text-decoration: none;
+      margin-bottom: 16px;
+
+      &:hover {
+        color: color.adjust($main-color, $lightness: -10%);
+      }
+    }
+  }
+
+  img.excavator {
+    position: absolute;
+    right: -40px;
+    bottom: -20px;
+    width: clamp(280px, 55%, 600px);
+    height: auto;
+    opacity: 0.25;
+    z-index: 1;
+    pointer-events: none;
+
+    @media (min-width: $bp-lg) {
+      opacity: 0.5;
+      right: 0;
+      bottom: -30px;
+      width: 50%;
+    }
+  }
+}
+
+// ---- Responsive nav ----
+@media (max-width: $bp-md - 1) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu__item a {
+    padding: 10px 20px;
+  }
+}

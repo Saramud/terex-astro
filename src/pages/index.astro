@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import Catalog from '../components/Catalog';
+import ContactForm from '../components/ContactForm';
+import { categories } from '../data/equipment';
+
+const title = 'Аренда спецтехники в Санкт-Петербурге — Терекс-Плюс';
+const description =
+  'На нашем сайте по аренде спецтехники компании «Терекс-Плюс» представлен большой выбор техники от мини-погрузчиков до автокранов 40 тонн. Если не нашли нужную Вам технику в общем каталоге — воспользуйтесь нашей удобной формой для отправки заявки!';
+const keywords =
+  'аренда спецтехники, аренда строительной техники, спецтехника в аренду, аренда дорожной техники, аренда спецтехники в Санкт-Петербурге, аренда гусеничного экскаватора';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical="https://terex-plus.ru/"
+>
+  <header id="header" class="header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-sm logo">
+          <img src="/img/logo_3.webp" width="100" alt="Аренда спецтехники в Санкт-Петербурге" />
+          <span class="logo_name">
+            ТЕРЕКС&#8209;ПЛЮС
+            <span class="sub">Аренда Спецтехники в СПб</span>
+          </span>
+        </div>
+        <div class="col-sm info text-right">
+          <a class="icon icon-phone" href="tel:8(812)989-03-32">8(812)989-03-32</a>
+          <a class="icon icon-mail header_button indexPage" href="#requestform">
+            Отправить заявку
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 text-center">
+          <nav>
+            <ul class="menu justify-content-center">
+              <li class="menu__item"><a class="active" href="/">Главная</a></li>
+              <li class="menu__item">
+                <div class="tech-dropdown">
+                  <a href="/technics.html" class="sub_menu" aria-haspopup="true">
+                    Спецтехника <i class="fa fa-angle-down" aria-hidden="true"></i>
+                  </a>
+                  <div class="my_dropdown" role="menu">
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/autokrans.html">Автокраны</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/manipulators.html">Манипуляторы</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/mini-pogruzchiki.html">Мини-погрузчики</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/mini-excavatory.html">Мини-экскаваторы</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/samosavls.html">Самосвалы</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/teleskopicheskie-pogruzchiki.html">Телескопические погрузчики</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/frontalnye-pogruzchiki.html">Фронтальные погрузчики</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/excavatory-gusenichnye.html">Экскаваторы гусеничные</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/excavatory-kolesnye.html">Экскаваторы колесные</a></div>
+                    <div class="panel-heading"><a class="dropdown-item" href="/technics/excavatory-pogruzchiki.html">Экскаваторы-погрузчики</a></div>
+                  </div>
+                </div>
+              </li>
+              <li class="menu__item"><a href="/about.html">О компании</a></li>
+              <li class="menu__item"><a href="/contacts.html">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+    <div class="header__phone">
+      <div class="container">
+        <div class="phone">
+          <h1>Аренда спецтехники в Санкт-Петербурге</h1>
+          <p><a href="tel:+7(812)989-03-32">8(812)989-03-32</a></p>
+        </div>
+      </div>
+      <img class="excavator" src="/img/terex.webp" width="800" alt="Экскаватор в аренду" />
+    </div>
+  </header>
+
+  <main>
+    <section class="technics">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm">
+            <h2 class="technics__title" id="mainPageCatalog">Каталог спецтехники</h2>
+          </div>
+        </div>
+        <Catalog client:load categories={categories} showFilters={true} />
+      </div>
+    </section>
+
+    <section class="information">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+            <h2 class="info__title">Работая с нами Вы получите</h2>
+            <div class="prop">
+              <ul class="advantages_list text-left">
+                <li>
+                  <div class="text-change">
+                    <div>
+                      <img
+                        src="/img/Tilda_Icons_3st_van.webp"
+                        alt="Большой выбор техники"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <b class="first">большой выбор техники</b>
+                      <b class="second">от мини-погрузчиков до самосвалов большетонников</b>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="text-change">
+                    <div>
+                      <img
+                        src="/img/Tilda_Icons_19ad_social_networks.webp"
+                        alt="Исправная техника"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <b class="first">100% исправную выбранную Вами модель спецтехники</b>
+                      <b class="second"
+                        >у нас работают квалифицированные механики, ежедневно поддерживающие технику</b
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="text-change">
+                    <div>
+                      <img
+                        src="/img/Tilda_Icons_31_format_doc.webp"
+                        alt="Официальный договор сотрудничества"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <b class="first">официальный договор сотрудничества</b>
+                      <b class="second"
+                        >договор — гарантия того, что будут выполнены все обязательства</b
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="text-change">
+                    <div>
+                      <img
+                        src="/img/Tilda_Icons_11mu_calendar.webp"
+                        alt="Любой срок аренды"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <b class="first">любой срок аренды</b>
+                      <b class="second">от одной смены до постоянного сотрудничества</b>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="text-change">
+                    <div>
+                      <img
+                        src="/img/Tilda_Icons_32_profession_builder.webp"
+                        alt="Профессиональный оператор техники"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <b class="first">профессионального оператора техники</b>
+                      <b class="second"
+                        >в нашем штате трудятся профессиональные специалисты, имеющие за плечами
+                        большой опыт</b
+                      >
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="text-change">
+                    <div>
+                      <img
+                        src="/img/Tilda_Icons_3st_discount2.webp"
+                        alt="Скидка на второй заказ"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <b class="first">скидку на второй заказ</b>
+                      <b class="second"
+                        >да-да! вы помогаете нам развиваться заказывая у нас технику, мы вам дарим
+                        скидку!</b
+                      >
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="information-second">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col">
+            <h2 class="info__title">СОТРУДНИЧАТЬ С НАМИ ВЫГОДНО!</h2>
+            <p class="advantages text-justify">
+              На сегодняшний день <strong>аренда спецтехники в СПб</strong> является популярной услугой
+              не только у коммерческих строительных организаций, но и у индивидуальных предпринимателей,
+              это обуславливается доступностью стоимости <strong>услуги аренды спецтехники.</strong>
+              С минимальными финансовыми вложениями вы сможете арендовать технику и выполнить широкий
+              спектр работ. У нас вы можете взять в аренду <strong
+                >экскаватор погрузчик с гидромолотом,</strong
+              >
+              <strong>экскаватор полноповоротный,</strong>
+              <strong>автокран 14 тонн,</strong>
+              <strong>автокран 40 тонн,</strong>
+              <strong>кран манипулятор</strong> и т.д.
+            </p>
+            <div class="embed-responsive embed-responsive-16by9 col-lg-6 video">
+              <video width="400" height="300" controls poster="/img/preload.webp" preload="none">
+                <source src="/video/terex-plus.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="request" id="requestform-section">
+      <div class="container">
+        <div class="row">
+          <ContactForm client:load title="Отправить заявку на аренду/подбор техники" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer isIndex={true} />
+</BaseLayout>
+
+<style>
+  .tech-dropdown .my_dropdown {
+    display: none;
+  }
+  .tech-dropdown:hover .my_dropdown,
+  .tech-dropdown:focus-within .my_dropdown {
+    display: block;
+  }
+</style>

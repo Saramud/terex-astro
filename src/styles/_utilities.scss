@@ -1,0 +1,141 @@
+// Text alignment
+.text-left {
+  text-align: left !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-right {
+  text-align: right !important;
+}
+.text-justify {
+  text-align: justify !important;
+}
+
+// Text colors
+.text-white {
+  color: $white !important;
+}
+.text-dark {
+  color: $black !important;
+}
+.text-muted {
+  color: $gray !important;
+}
+
+// Backgrounds
+.bg-warning {
+  background-color: $main-color !important;
+}
+.bg-secondary {
+  background-color: $gray !important;
+}
+.bg-light {
+  background-color: $gray-light !important;
+}
+
+// Font weight
+.font-weight-bold {
+  font-weight: 700 !important;
+}
+.font-weight-600 {
+  font-weight: 600 !important;
+}
+
+// Margins
+.ml-auto {
+  margin-left: auto !important;
+}
+.mr-auto {
+  margin-right: auto !important;
+}
+.mx-auto {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+.mt-0 {
+  margin-top: 0 !important;
+}
+
+// Display
+.d-none {
+  display: none !important;
+}
+.d-block {
+  display: block !important;
+}
+.d-flex {
+  display: flex !important;
+}
+
+// Flex
+.justify-content-center {
+  justify-content: center !important;
+}
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.align-items-center {
+  align-items: center !important;
+}
+
+// Borders
+.border-warning {
+  border: 2px solid $main-color !important;
+}
+
+// Video embed
+.embed-responsive {
+  position: relative;
+  display: block;
+  width: 100%;
+  overflow: hidden;
+
+  &::before {
+    display: block;
+    content: '';
+  }
+
+  &-16by9::before {
+    padding-top: 56.25%;
+  }
+
+  iframe,
+  video,
+  embed,
+  object {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+}
+
+// Screen-reader only (visually hidden but accessible)
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Breadcrumb
+.custom-nav {
+  font-size: 14px;
+  color: $gray;
+
+  a {
+    color: $gray;
+    &:hover {
+      color: $main-color;
+    }
+  }
+}

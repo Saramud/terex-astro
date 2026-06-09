@@ -1,0 +1,139 @@
+@use 'sass:color';
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  white-space: nowrap;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 3px solid $main-color;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.btn-warning {
+  color: $black;
+  background-color: $main-color;
+  border-color: $main-color;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 12px 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &:hover {
+    background-color: $main-color-dark;
+    border-color: $main-color-dark;
+  }
+}
+
+.btn-light {
+  color: $black;
+  background-color: $gray-light;
+  border-color: $gray-border;
+
+  &:hover {
+    background-color: color.adjust($gray-light, $lightness: -5%);
+    border-color: color.adjust($gray-border, $lightness: -8%);
+  }
+}
+
+.btn-information {
+  display: block;
+  margin: 8px auto 0;
+
+  span {
+    display: block;
+    padding: 8px 20px;
+    background-color: $main-color;
+    color: $black;
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+
+  &:hover span {
+    background-color: $main-color-dark;
+    color: $black;
+  }
+}
+
+.btn_modal {
+  display: block;
+  margin: 0 auto 15px;
+  text-transform: uppercase;
+  background-color: $white;
+  border: 2px solid $black;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 24px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: $gray-border;
+  }
+}
+
+.footer_button {
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  color: $white;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    border-color: $main-color;
+    color: $main-color;
+  }
+}
+
+.orderTech {
+  margin-top: 16px;
+  padding: 8px 0;
+}
+
+.close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: color 0.15s;
+
+  &:hover {
+    color: $black;
+  }
+}

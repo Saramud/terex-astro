@@ -1,0 +1,32 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+
+  th,
+  td {
+    padding: 6px 8px;
+    border-bottom: 1px solid $gray-border;
+    vertical-align: top;
+  }
+
+  &-sm {
+    th,
+    td {
+      padding: 4px 6px;
+    }
+  }
+
+  &-hover {
+    tbody tr:hover {
+      background-color: rgba($main-color, 0.08);
+    }
+  }
+
+  &-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}

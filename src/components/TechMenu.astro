@@ -1,0 +1,58 @@
+---
+interface Props {
+  activePage?: string;
+}
+
+const { activePage } = Astro.props;
+const isTechnicsActive = activePage === 'technics' || activePage === 'technicItem';
+
+const categories = [
+  { href: '/technics/autokrans.html', label: 'Автокраны' },
+  { href: '/technics/manipulators.html', label: 'Манипуляторы' },
+  { href: '/technics/mini-pogruzchiki.html', label: 'Мини-погрузчики' },
+  { href: '/technics/mini-excavatory.html', label: 'Мини-экскаваторы' },
+  { href: '/technics/samosavls.html', label: 'Самосвалы' },
+  { href: '/technics/teleskopicheskie-pogruzchiki.html', label: 'Телескопические погрузчики' },
+  { href: '/technics/frontalnye-pogruzchiki.html', label: 'Фронтальные погрузчики' },
+  { href: '/technics/excavatory-gusenichnye.html', label: 'Экскаваторы гусеничные' },
+  { href: '/technics/excavatory-kolesnye.html', label: 'Экскаваторы колесные' },
+  { href: '/technics/excavatory-pogruzchiki.html', label: 'Экскаваторы-погрузчики' },
+];
+---
+
+<div class="tech-dropdown">
+  <a
+    href="/technics.html"
+    class:list={['sub_menu', isTechnicsActive && 'active']}
+    aria-haspopup="true"
+  >
+    Спецтехника
+    <i class="fa fa-angle-down" aria-hidden="true"></i>
+  </a>
+  <div class="my_dropdown" role="menu">
+    {
+      categories.map(({ href, label }) => (
+        <div class="panel-heading">
+          <a class="dropdown-item" href={href} role="menuitem">
+            {label}
+          </a>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .tech-dropdown {
+    position: relative;
+  }
+
+  .tech-dropdown .my_dropdown {
+    display: none;
+  }
+
+  .tech-dropdown:hover .my_dropdown,
+  .tech-dropdown:focus-within .my_dropdown {
+    display: block;
+  }
+</style>

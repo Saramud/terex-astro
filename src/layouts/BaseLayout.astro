@@ -1,0 +1,174 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/main.scss';
+
+interface Props {
+  title: string;
+  description: string;
+  keywords?: string;
+  canonical?: string;
+  ogImage?: string;
+  jsonLdExtra?: object[];
+}
+
+const {
+  title,
+  description,
+  keywords = '',
+  canonical,
+  ogImage = 'https://terex-plus.ru/img/logo_2.webp',
+  jsonLdExtra = [],
+} = Astro.props;
+
+const BASE_URL = 'https://terex-plus.ru';
+
+const localBusinessLD = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Терекс-Плюс',
+  image: `${BASE_URL}/img/logo_3.webp`,
+  url: BASE_URL,
+  telephone: '+7(812)989-03-32',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Таллинское шоссе, 153/3',
+    addressLocality: 'Санкт-Петербург',
+    addressCountry: 'RU',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '59.8124485',
+    longitude: '30.16469691',
+  },
+  description:
+    'Компания «Терекс-Плюс» предоставляет в аренду дорожную и строительную технику по Санкт-Петербургу и Ленинградской области',
+  openingHours: ['Mo-Su 00:00-24:00'],
+};
+
+const organizationLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'Терекс-Плюс',
+  url: BASE_URL,
+  logo: `${BASE_URL}/img/logo_3.webp`,
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: '+7(812)989-03-32',
+      contactType: 'customer service',
+      email: 'info@terex-plus.ru',
+      availableLanguage: ['Russian'],
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <meta name="robots" content="index, follow" />
+    <meta name="google-site-verification" content="gXVs0NLswo4D7iBsL9nx21Zy6MF5UmIT4_nihLKJw_Q" />
+    <title>{title}</title>
+    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="preconnect" href="https://mc.yandex.ru" />
+
+    <!-- Open Graph -->
+    <meta property="og:locale" content="ru_RU" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Терекс-Плюс — аренда спецтехники в СПб" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical ?? BASE_URL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="300" />
+    <meta property="og:image:height" content="300" />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessLD)} />
+    <script type="application/ld+json" set:html={JSON.stringify(organizationLD)} />
+    {jsonLdExtra.map((ld) => <script type="application/ld+json" set:html={JSON.stringify(ld)} />)}
+
+    <ViewTransitions />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // Modal open/close
+      document.addEventListener('astro:page-load', () => {
+        document.querySelectorAll<HTMLElement>('[data-modal]').forEach((trigger) => {
+          trigger.addEventListener('click', (e) => {
+            e.preventDefault();
+            const sel = trigger.getAttribute('data-modal');
+            if (!sel) return;
+            const modal = document.querySelector<HTMLElement>(sel);
+            if (modal) {
+              modal.classList.add('show');
+              document.body.style.overflow = 'hidden';
+            }
+          });
+        });
+
+        document.querySelectorAll<HTMLElement>('[data-modal-close]').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            const modal = btn.closest<HTMLElement>('.modal');
+            if (modal) {
+              modal.classList.remove('show');
+              document.body.style.overflow = '';
+            }
+          });
+        });
+
+        document.querySelectorAll<HTMLElement>('.modal').forEach((modal) => {
+          modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              modal.classList.remove('show');
+              document.body.style.overflow = '';
+            }
+          });
+        });
+
+        document.addEventListener(
+          'keydown',
+          (e) => {
+            if (e.key === 'Escape') {
+              document.querySelectorAll<HTMLElement>('.modal.show').forEach((m) => {
+                m.classList.remove('show');
+                document.body.style.overflow = '';
+              });
+            }
+          },
+          { once: true }
+        );
+
+        // Smooth scroll for .indexPage links
+        document.querySelectorAll<HTMLElement>('.indexPage').forEach((el) => {
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = el.getAttribute('href') ?? el.getAttribute('data-href') ?? '#requestform';
+            const target = document.querySelector<HTMLElement>(href);
+            if (!target) return;
+            const sendBtn = document.getElementById('sendMail');
+            if (sendBtn) {
+              sendBtn.style.animation = 'blink 0.7s ease-in-out 3';
+              sendBtn.addEventListener(
+                'animationend',
+                () => {
+                  sendBtn.style.animation = '';
+                },
+                { once: true }
+              );
+            }
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

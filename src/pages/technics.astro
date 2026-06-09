@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Strip from '../components/Strip.astro';
+import Footer from '../components/Footer.astro';
+import Catalog from '../components/Catalog';
+import { categories } from '../data/equipment';
+
+const title = 'Спецтехника в аренду в Санкт-Петербурге — Терекс-Плюс';
+const description =
+  'Каталог спецтехники в аренду: автокраны, экскаваторы, манипуляторы, самосвалы, погрузчики. Аренда спецтехники в СПб от компании Терекс-Плюс.';
+const keywords = 'аренда спецтехники СПб, каталог спецтехники, экскаватор аренда, автокран аренда';
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical="https://terex-plus.ru/technics.html"
+>
+  <Header page="technics" />
+  <Strip categoryName="Спецтехника" />
+
+  <main>
+    <section class="technics">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm">
+            <h1 class="technics__title" id="allTechnics">Каталог спецтехники</h1>
+          </div>
+        </div>
+        <Catalog client:load categories={categories} showFilters={true} />
+      </div>
+    </section>
+  </main>
+
+  <Footer showModal={true} />
+</BaseLayout>

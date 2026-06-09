@@ -1,0 +1,114 @@
+.container {
+  width: 100%;
+  max-width: $container-max-width;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gutter;
+  margin-left: -$gutter;
+}
+
+[class*='col-'],
+.col {
+  position: relative;
+  width: 100%;
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
+
+.col-12 {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+.col-6 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.col-4 {
+  flex: 0 0 33.333333%;
+  max-width: 33.333333%;
+}
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 25%;
+}
+
+@media (min-width: $bp-sm) {
+  .col-sm {
+    flex: 1 1 0%;
+    max-width: 100%;
+    width: auto;
+    padding-right: $gutter;
+    padding-left: $gutter;
+  }
+
+  .col-sm-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-sm-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-sm-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+
+  .order-sm-0 {
+    order: 0;
+  }
+  .order-sm-1 {
+    order: 1;
+  }
+  .order-sm-2 {
+    order: 2;
+  }
+}
+
+@media (min-width: $bp-md) {
+  .col-md-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: $bp-lg) {
+  .col-lg-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .col-lg-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  .col-lg-4 {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+  .col-lg-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+  .col-lg {
+    flex: 1 1 0%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: $bp-sm - 1) {
+  .col-sm {
+    width: 100%;
+  }
+  .col-sm-6,
+  .col-sm-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

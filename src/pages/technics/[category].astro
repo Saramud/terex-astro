@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Strip from '../../components/Strip.astro';
+import Footer from '../../components/Footer.astro';
+import Catalog from '../../components/Catalog';
+import { categories } from '../../data/equipment';
+
+export function getStaticPaths() {
+  return categories.map((cat) => ({
+    params: { category: cat.urlSlug },
+    props: { category: cat },
+  }));
+}
+
+const { category } = Astro.props;
+
+const title = `Аренда: ${category.name} в Санкт-Петербурге — Терекс-Плюс`;
+const description = `Аренда ${category.name.toLowerCase()} в Санкт-Петербурге и Ленинградской области. Компания Терекс-Плюс — собственный автопарк, профессиональные операторы, работаем 24/7.`;
+const canonical = `https://terex-plus.ru/technics/${category.urlSlug}.html`;
+---
+
+<BaseLayout title={title} description={description} canonical={canonical}>
+  <Header page="technics" />
+  <Strip categoryName={category.name} categoryUrl={`/technics/${category.urlSlug}.html`} />
+
+  <main>
+    <section class="technics">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm">
+            <h1 class="technics__title" id={category.urlSlug}>{category.name}</h1>
+          </div>
+        </div>
+        <Catalog client:load categories={[category]} showFilters={false} />
+      </div>
+    </section>
+  </main>
+
+  <Footer showModal={true} />
+</BaseLayout>

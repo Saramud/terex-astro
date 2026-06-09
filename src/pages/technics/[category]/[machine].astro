@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Strip from '../../../components/Strip.astro';
+import Footer from '../../../components/Footer.astro';
+import Modal from '../../../components/Modal.astro';
+import { categories } from '../../../data/equipment';
+import { propertyLabels } from '../../../data/types';
+import type { TechPropertyKey } from '../../../data/types';
+
+export function getStaticPaths() {
+  return categories.flatMap((cat) =>
+    cat.items.map((item) => ({
+      params: { category: cat.urlSlug, machine: item.id },
+      props: { category: cat, item },
+    }))
+  );
+}
+
+const { category, item } = Astro.props;
+
+const pageTitle = `Аренда ${item.title} в СПб — Терекс-Плюс`;
+const description = `Аренда ${item.title} в Санкт-Петербурге и Ленинградской области — Цена за смену от ${item.price} руб. Аренда в круглосуточном режиме.`;
+const canonical = `https://terex-plus.ru/technics/${category.urlSlug}/${item.id}.html`;
+
+const serviceLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Аренда ${item.title} в Санкт-Петербурге`,
+  description,
+  provider: {
+    '@type': 'Organization',
+    name: 'Терекс-Плюс',
+    url: 'https://terex-plus.ru',
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Санкт-Петербург' },
+    { '@type': 'AdministrativeArea', name: 'Ленинградская область' },
+  ],
+  offers: {
+    '@type': 'Offer',
+    availability: 'https://schema.org/InStock',
+    seller: { '@type': 'Organization', name: 'Терекс-Плюс' },
+  },
+};
+
+// Sibling items in same category (for nav selector)
+const prefix = item.id.slice(0, 4);
+const siblings = category.items.filter((i) => i.id.startsWith(prefix));
+---
+
+<BaseLayout
+  title={pageTitle}
+  description={description}
+  canonical={canonical}
+  ogImage={`https://terex-plus.ru${item.img}`}
+  jsonLdExtra={[serviceLD]}
+>
+  <Header page="technicItem" />
+  <Strip
+    itemName={item.title}
+    categoryName={category.name}
+    categoryUrl={`/technics/${category.urlSlug}.html`}
+  />
+
+  <main>
+    <section class="technic">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 text-center">
+            <h1 class="info__title">{item.title}</h1>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-lg-5 col-md-10 col-12 text-center">
+            <img src={item.img} alt={item.title} loading="eager" width={600} height={400} />
+          </div>
+          <div class="col-lg-5 col-md-10 col-12">
+            <div class="card bg-light mb-3">
+              <div class="card-header text-center">Технические характеристики</div>
+              <div class="card-body">
+                <table class="table table-hover">
+                  <tbody class="tbody">
+                    {
+                      category.properties.map((prop) => (
+                        <tr>
+                          <td class="text-dark text-left">
+                            {propertyLabels[prop as TechPropertyKey]}
+                          </td>
+                          <th class="text-dark text-right">
+                            {item.props[prop as TechPropertyKey] ?? '—'}
+                          </th>
+                        </tr>
+                      ))
+                    }
+                    <tr class="bg-secondary">
+                      <th class="text-left">СТОИМОСТЬ</th>
+                      <th class="text-right">от {item.price} руб. ЗА СМЕНУ<br />(8 ЧАСОВ)</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="orderTech text-center">
+              <button
+                class="btn btn-warning"
+                type="button"
+                data-modal="#exampleModalCenter"
+              >
+                Арендовать
+              </button>
+            </div>
+          </div>
+        </div>
+        {
+          siblings.length > 1 && (
+            <div class="row text-center">
+              <div class="col nav-menu">
+                <p class="siblings-label">Другие модели в этой категории:</p>
+                <ul class="technic__selector">
+                  {siblings.map((s) => (
+                    <li
+                      class:list={[
+                        'btn',
+                        s.id === item.id ? 'technic_active' : 'btn-light technic_passive',
+                      ]}
+                    >
+                      <a class="nav-link" href={s.link}>
+                        {s.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )
+        }
+        <hr />
+      </div>
+    </section>
+  </main>
+
+  <Modal defaultTechnics={item.title} />
+  <Footer showModal={false} />
+</BaseLayout>

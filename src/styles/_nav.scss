@@ -1,0 +1,246 @@
+// Main header navigation
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu__item {
+  position: relative;
+
+  a {
+    display: block;
+    padding: 8px 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition: color 0.2s;
+
+    &:hover,
+    &.active {
+      color: $main-color;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $main-color;
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+  }
+}
+
+// Footer menu
+.footer__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-menu__item a {
+  display: block;
+  padding: 4px 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+
+  &:hover {
+    color: $main-color;
+  }
+}
+
+// Technics dropdown
+.tech-dropdown {
+  position: relative;
+
+  .my_dropdown {
+    display: none;
+  }
+
+  &:hover .my_dropdown,
+  &:focus-within .my_dropdown {
+    display: block;
+  }
+}
+
+.sub_menu {
+  display: block;
+  padding: 8px 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 14px;
+  cursor: pointer;
+  color: inherit;
+  transition: color 0.2s;
+  user-select: none;
+
+  &:hover,
+  &.active {
+    color: $main-color;
+  }
+
+  i {
+    margin-left: 4px;
+    transition: transform 0.2s;
+    display: inline-block;
+  }
+}
+
+.my_dropdown {
+  background: $white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  min-width: 220px;
+  z-index: 100;
+  position: absolute;
+  left: 0;
+  top: 100%;
+}
+
+// Collapse component
+.collapse {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}
+
+.panel-collapse {
+  overflow: hidden;
+}
+
+// Dropdown links
+.dropdown-item {
+  display: block;
+  padding: 6px 16px;
+  font-size: 14px;
+  color: $black;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: $gray-light;
+    color: $main-color;
+  }
+
+  &.dropdown_active {
+    font-weight: 600;
+    color: $main-color;
+  }
+
+  i {
+    display: none;
+  }
+}
+
+// Font Awesome chevron fallback
+.fa-angle-down::before {
+  content: '▾';
+  font-style: normal;
+}
+
+.siblings-label {
+  font-size: 13px;
+  color: $gray;
+  margin-bottom: 8px;
+}
+
+// Technics page nav selector
+.technic__selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.technic_active a,
+.technic_passive a {
+  display: block;
+  padding: 6px 12px;
+  font-size: 13px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.technic_active {
+  background-color: $main-color;
+  border-radius: 4px;
+
+  a {
+    font-weight: 600;
+  }
+}
+
+.technic_passive:hover {
+  background-color: $gray-light;
+}
+
+// Technics filter menu
+.technics__menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  list-style: none;
+  padding: 16px 0;
+  margin: 0;
+}
+
+.techs {
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid $gray-border;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+
+  &:hover {
+    border-color: $main-color;
+    color: $main-color;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $main-color;
+    outline-offset: 2px;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &.techs-active {
+    background-color: $main-color;
+    border-color: $main-color;
+    color: $black;
+  }
+}
+
+@media (max-width: $bp-md - 1) {
+  .technics__menu {
+    gap: 6px;
+    padding: 12px 0;
+  }
+
+  .techs {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .my_dropdown {
+    min-width: 180px;
+  }
+}
+
+// Category page active nav item
+.allTechnics {
+  background-color: $main-color;
+  border-color: $main-color;
+}
