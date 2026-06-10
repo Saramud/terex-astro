@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Гусеничный экскаватор">
+  <circle cx="200" cy="158" r="128" fill="#f1f3f5"/>
+  <ellipse cx="205" cy="264" rx="150" ry="9" fill="#000" opacity="0.07"/>
+  <rect x="108" y="210" width="184" height="50" rx="25" fill="#2d2d2d"/>
+  <rect x="120" y="222" width="160" height="26" rx="13" fill="#1a1a1a"/>
+  <circle cx="136" cy="235" r="10" fill="#6e6e6e"/>
+  <circle cx="168" cy="235" r="10" fill="#6e6e6e"/>
+  <circle cx="200" cy="235" r="10" fill="#6e6e6e"/>
+  <circle cx="232" cy="235" r="10" fill="#6e6e6e"/>
+  <circle cx="264" cy="235" r="10" fill="#6e6e6e"/>
+  <rect x="92" y="186" width="196" height="24" rx="7" fill="#e6b000"/>
+  <rect x="92" y="136" width="124" height="54" rx="9" fill="#ffc61a"/>
+  <rect x="104" y="148" width="34" height="4" rx="2" fill="#1a1a1a" opacity="0.25"/>
+  <rect x="104" y="158" width="34" height="4" rx="2" fill="#1a1a1a" opacity="0.25"/>
+  <rect x="104" y="168" width="34" height="4" rx="2" fill="#1a1a1a" opacity="0.25"/>
+  <rect x="118" y="116" width="10" height="24" rx="4" fill="#2d2d2d"/>
+  <rect x="202" y="114" width="50" height="76" rx="8" fill="#ffc61a"/>
+  <rect x="210" y="123" width="34" height="36" rx="4" fill="#2d2d2d"/>
+  <line x1="244" y1="166" x2="296" y2="130" stroke="#6e6e6e" stroke-width="7" stroke-linecap="round"/>
+  <path d="M262 186 L322 112" stroke="#1a1a1a" stroke-width="27" stroke-linecap="round" fill="none"/>
+  <path d="M262 186 L322 112" stroke="#ffc61a" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <path d="M322 112 L354 196" stroke="#1a1a1a" stroke-width="21" stroke-linecap="round" fill="none"/>
+  <path d="M322 112 L354 196" stroke="#ffc61a" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M354 192 l32 7 -11 28 -28 -11 z" fill="#2d2d2d"/>
+  <circle cx="262" cy="186" r="8" fill="#1a1a1a"/>
+  <circle cx="262" cy="186" r="3.5" fill="#6e6e6e"/>
+  <circle cx="322" cy="112" r="8" fill="#1a1a1a"/>
+  <circle cx="322" cy="112" r="3.5" fill="#6e6e6e"/>
+  <circle cx="354" cy="196" r="7" fill="#1a1a1a"/>
+  <circle cx="354" cy="196" r="3" fill="#6e6e6e"/>
+</svg>

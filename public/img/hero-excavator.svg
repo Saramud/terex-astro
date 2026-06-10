@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 290" role="img" aria-label="Гусеничный экскаватор в аренду">
+  <ellipse cx="205" cy="268" rx="160" ry="10" fill="#000" opacity="0.3"/>
+  <rect x="108" y="214" width="184" height="50" rx="25" fill="#2d2d2d"/>
+  <rect x="120" y="226" width="160" height="26" rx="13" fill="#1a1a1a"/>
+  <circle cx="136" cy="239" r="10" fill="#6e6e6e"/>
+  <circle cx="168" cy="239" r="10" fill="#6e6e6e"/>
+  <circle cx="200" cy="239" r="10" fill="#6e6e6e"/>
+  <circle cx="232" cy="239" r="10" fill="#6e6e6e"/>
+  <circle cx="264" cy="239" r="10" fill="#6e6e6e"/>
+  <rect x="92" y="190" width="196" height="24" rx="7" fill="#e6b000"/>
+  <rect x="92" y="140" width="124" height="54" rx="9" fill="#ffc61a"/>
+  <rect x="104" y="152" width="34" height="4" rx="2" fill="#1a1a1a" opacity="0.35"/>
+  <rect x="104" y="162" width="34" height="4" rx="2" fill="#1a1a1a" opacity="0.35"/>
+  <rect x="104" y="172" width="34" height="4" rx="2" fill="#1a1a1a" opacity="0.35"/>
+  <rect x="118" y="120" width="10" height="24" rx="4" fill="#2d2d2d"/>
+  <rect x="202" y="118" width="50" height="76" rx="8" fill="#ffc61a"/>
+  <rect x="210" y="127" width="34" height="36" rx="4" fill="#2d2d2d"/>
+  <line x1="244" y1="170" x2="296" y2="134" stroke="#6e6e6e" stroke-width="7" stroke-linecap="round"/>
+  <path d="M262 190 L322 116" stroke="#1a1a1a" stroke-width="27" stroke-linecap="round" fill="none"/>
+  <path d="M262 190 L322 116" stroke="#ffc61a" stroke-width="18" stroke-linecap="round" fill="none"/>
+  <path d="M322 116 L354 200" stroke="#1a1a1a" stroke-width="21" stroke-linecap="round" fill="none"/>
+  <path d="M322 116 L354 200" stroke="#ffc61a" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M354 196 l32 7 -11 28 -28 -11 z" fill="#2d2d2d"/>
+  <circle cx="262" cy="190" r="8" fill="#1a1a1a"/>
+  <circle cx="262" cy="190" r="3.5" fill="#6e6e6e"/>
+  <circle cx="322" cy="116" r="8" fill="#1a1a1a"/>
+  <circle cx="322" cy="116" r="3.5" fill="#6e6e6e"/>
+  <circle cx="354" cy="200" r="7" fill="#1a1a1a"/>
+  <circle cx="354" cy="200" r="3" fill="#6e6e6e"/>
+</svg>

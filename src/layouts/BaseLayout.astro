@@ -11,22 +11,22 @@ interface Props {
   jsonLdExtra?: object[];
 }
 
+const BASE_URL = 'https://terex-plus.ru';
+
 const {
   title,
   description,
   keywords = '',
   canonical,
-  ogImage = 'https://terex-plus.ru/img/logo_2.webp',
+  ogImage = `${BASE_URL}/img/og.png`,
   jsonLdExtra = [],
 } = Astro.props;
-
-const BASE_URL = 'https://terex-plus.ru';
 
 const localBusinessLD = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   name: 'Терекс-Плюс',
-  image: `${BASE_URL}/img/logo_3.webp`,
+  image: `${BASE_URL}/img/logo.png`,
   url: BASE_URL,
   telephone: '+7(812)989-03-32',
   address: {
@@ -50,7 +50,7 @@ const organizationLD = {
   '@type': 'Organization',
   name: 'Терекс-Плюс',
   url: BASE_URL,
-  logo: `${BASE_URL}/img/logo_3.webp`,
+  logo: `${BASE_URL}/img/logo.png`,
   contactPoint: [
     {
       '@type': 'ContactPoint',
@@ -74,7 +74,8 @@ const organizationLD = {
     <meta name="robots" content="index, follow" />
     <meta name="google-site-verification" content="gXVs0NLswo4D7iBsL9nx21Zy6MF5UmIT4_nihLKJw_Q" />
     <title>{title}</title>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="preconnect" href="https://mc.yandex.ru" />
 
@@ -86,8 +87,8 @@ const organizationLD = {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical ?? BASE_URL} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="300" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- JSON-LD -->
     <script type="application/ld+json" set:html={JSON.stringify(localBusinessLD)} />

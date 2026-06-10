@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Автокран">
+  <circle cx="200" cy="158" r="128" fill="#f1f3f5"/>
+  <ellipse cx="200" cy="264" rx="150" ry="9" fill="#000" opacity="0.07"/>
+  <!-- стрела -->
+  <path d="M128 188 L322 74" stroke="#1a1a1a" stroke-width="22" stroke-linecap="round" fill="none"/>
+  <path d="M128 188 L322 74" stroke="#ffc61a" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <!-- телескопическая секция -->
+  <path d="M236 124 L322 74" stroke="#e6b000" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <!-- трос и крюк -->
+  <line x1="322" y1="74" x2="322" y2="128" stroke="#1a1a1a" stroke-width="3"/>
+  <path d="M322 128 a8 8 0 1 0 8 8" stroke="#2d2d2d" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- крановая опора (турель) -->
+  <rect x="104" y="168" width="64" height="32" rx="7" fill="#ffc61a"/>
+  <circle cx="128" cy="188" r="8" fill="#1a1a1a"/>
+  <circle cx="128" cy="188" r="3.5" fill="#6e6e6e"/>
+  <!-- рама -->
+  <rect x="66" y="198" width="248" height="20" rx="6" fill="#e6b000"/>
+  <!-- кабина -->
+  <rect x="250" y="146" width="60" height="72" rx="9" fill="#ffc61a"/>
+  <rect x="259" y="155" width="30" height="28" rx="4" fill="#2d2d2d"/>
+  <!-- аутригер -->
+  <rect x="84" y="214" width="11" height="28" rx="4" fill="#2d2d2d"/>
+  <rect x="74" y="240" width="30" height="8" rx="4" fill="#1a1a1a"/>
+  <!-- колёса -->
+  <circle cx="136" cy="232" r="24" fill="#2d2d2d"/>
+  <circle cx="136" cy="232" r="10" fill="#6e6e6e"/>
+  <circle cx="188" cy="232" r="24" fill="#2d2d2d"/>
+  <circle cx="188" cy="232" r="10" fill="#6e6e6e"/>
+  <circle cx="276" cy="232" r="24" fill="#2d2d2d"/>
+  <circle cx="276" cy="232" r="10" fill="#6e6e6e"/>
+</svg>

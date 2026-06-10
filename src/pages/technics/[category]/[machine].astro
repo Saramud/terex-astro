@@ -8,6 +8,7 @@ import { categories } from '../../../data/equipment';
 import { propertyLabels } from '../../../data/types';
 import type { TechPropertyKey } from '../../../data/types';
 import { categorySeo } from '../../../data/seoTexts';
+import { categoryImages } from '../../../data/categoryImages';
 
 export function getStaticPaths() {
   return categories.flatMap((cat) =>
@@ -20,6 +21,7 @@ export function getStaticPaths() {
 
 const { category, item } = Astro.props;
 const seo = categorySeo[category.urlSlug];
+const catImg = categoryImages[category.urlSlug];
 const priceFmt = item.price.toLocaleString('ru-RU');
 
 const pageTitle = `Аренда ${item.title} в СПб от ${priceFmt} ₽/смена — Терекс-Плюс`;
@@ -31,7 +33,7 @@ const serviceLD = {
   '@type': 'Service',
   name: `Аренда ${item.title} в Санкт-Петербурге`,
   description,
-  image: `https://terex-plus.ru${item.img}`,
+  image: `https://terex-plus.ru${catImg}`,
   provider: {
     '@type': 'Organization',
     name: 'Терекс-Плюс',
@@ -59,7 +61,6 @@ const siblings = category.items.filter((i) => i.id.startsWith(prefix));
   title={pageTitle}
   description={description}
   canonical={canonical}
-  ogImage={`https://terex-plus.ru${item.img}`}
   jsonLdExtra={[serviceLD]}
 >
   <Header page="technicItem" showModal={false} />
@@ -79,7 +80,7 @@ const siblings = category.items.filter((i) => i.id.startsWith(prefix));
         </div>
         <div class="row justify-content-center">
           <div class="col-12 col-lg-6 technic__photo">
-            <img src={item.img} alt={item.title} loading="eager" width={600} height={400} />
+            <img src={catImg} alt={item.title} loading="eager" width={400} height={300} />
           </div>
           <div class="col-12 col-lg-6">
             <div class="technic__buy">
@@ -118,7 +119,9 @@ const siblings = category.items.filter((i) => i.id.startsWith(prefix));
                 Чтобы арендовать технику, позвоните по телефону
                 <a href="tel:8(812)989-03-32">8&nbsp;(812)&nbsp;989-03-32</a> или оставьте заявку — менеджер
                 уточнит задачу, рассчитает стоимость с доставкой и согласует время подачи. Смотрите также
-                другие <a href={`/technics/${category.urlSlug}.html`}>{seo.genitive} в аренду</a>.
+                полный каталог <a href={`/technics/${category.urlSlug}.html`}>
+                  {seo.genitive} в аренду
+                </a>.
               </p>
             </div>
           </div>

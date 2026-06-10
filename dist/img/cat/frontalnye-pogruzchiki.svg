@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Фронтальный погрузчик">
+  <circle cx="200" cy="158" r="128" fill="#f1f3f5"/>
+  <ellipse cx="200" cy="262" rx="145" ry="9" fill="#000" opacity="0.07"/>
+  <!-- задняя часть (двигатель) -->
+  <rect x="104" y="152" width="92" height="60" rx="10" fill="#ffc61a"/>
+  <rect x="116" y="166" width="28" height="4" rx="2" fill="#1a1a1a" opacity="0.25"/>
+  <rect x="116" y="176" width="28" height="4" rx="2" fill="#1a1a1a" opacity="0.25"/>
+  <rect x="116" y="186" width="28" height="4" rx="2" fill="#1a1a1a" opacity="0.25"/>
+  <!-- выхлоп -->
+  <rect x="124" y="128" width="10" height="26" rx="4" fill="#2d2d2d"/>
+  <!-- кабина -->
+  <rect x="158" y="116" width="60" height="64" rx="9" fill="#ffc61a"/>
+  <rect x="167" y="125" width="42" height="32" rx="4" fill="#2d2d2d"/>
+  <!-- сочленение -->
+  <rect x="212" y="166" width="36" height="40" rx="8" fill="#e6b000"/>
+  <!-- стрела -->
+  <path d="M240 176 L302 208" stroke="#1a1a1a" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <path d="M240 176 L302 208" stroke="#ffc61a" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <circle cx="240" cy="176" r="8" fill="#1a1a1a"/>
+  <circle cx="240" cy="176" r="3.5" fill="#6e6e6e"/>
+  <!-- большой ковш -->
+  <path d="M296 190 h56 l-10 42 h-50 z" fill="#2d2d2d"/>
+  <!-- колёса -->
+  <circle cx="150" cy="228" r="29" fill="#2d2d2d"/>
+  <circle cx="150" cy="228" r="12" fill="#6e6e6e"/>
+  <circle cx="258" cy="228" r="29" fill="#2d2d2d"/>
+  <circle cx="258" cy="228" r="12" fill="#6e6e6e"/>
+</svg>

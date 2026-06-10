@@ -17,7 +17,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'atkrnKAMAZVEZDEHOD',
         title: 'Автокран КАМАЗ "Галичанин" 25 тонн',
-        img: '/img/atkrnKAMAZVEZDEHOD.webp',
+        img: '/img/cat/autokrans.svg',
         link: '/technics/autokrans/atkrnKAMAZVEZDEHOD.html',
         price: 18000,
         props: {
@@ -32,7 +32,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'atkrnMaz',
         title: 'Автокран МАЗ 14 тонн',
-        img: '/img/atkrnMaz.webp',
+        img: '/img/cat/autokrans.svg',
         link: '/technics/autokrans/atkrnMaz.html',
         price: 11000,
         props: {
@@ -47,7 +47,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'atkrURAL55733',
         title: 'Автокран Урал КС-55733 ЧЕЛЯБИНЕЦ 32 тонны',
-        img: '/img/atkrURAL55733.webp',
+        img: '/img/cat/autokrans.svg',
         link: '/technics/autokrans/atkrURAL55733.html',
         price: 17000,
         props: {
@@ -62,7 +62,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'atkrKAMAZ65115',
         title: 'Автокран КАМАЗ-65115 «Клинцы» КС-55713-1К-3 25 тонн',
-        img: '/img/atkrKAMAZ65115.webp',
+        img: '/img/cat/autokrans.svg',
         link: '/technics/autokrans/atkrKAMAZ65115.html',
         price: 11000,
         props: {
@@ -77,7 +77,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'atkrKAMAZ63501',
         title: 'Автокран КАМАЗ-63501 «Клинцы» КС-65719-1К 40 тонн',
-        img: '/img/atkrKAMAZ63501.webp',
+        img: '/img/cat/autokrans.svg',
         link: '/technics/autokrans/atkrKAMAZ63501.html',
         price: 23000,
         props: {
@@ -107,7 +107,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'mineKubota',
         title: 'Мини-экскаватор Kubota KX057-4',
-        img: '/img/mineKubota.webp',
+        img: '/img/cat/mini-excavatory.svg',
         link: '/technics/mini-excavatory/mineKubota.html',
         price: 11000,
         props: {
@@ -122,7 +122,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'mineHitachiEX30',
         title: 'Мини-экскаватор HITACHI EX30 UR2',
-        img: '/img/mineHitachiEX30.webp',
+        img: '/img/cat/mini-excavatory.svg',
         link: '/technics/mini-excavatory/mineHitachiEX30.html',
         price: 10000,
         props: {
@@ -137,7 +137,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'mineTakeuchiTB016',
         title: 'Мини-экскаватор TAKEUCHI TB016',
-        img: '/img/mineTakeuchiTB016.webp',
+        img: '/img/cat/mini-excavatory.svg',
         link: '/technics/mini-excavatory/mineTakeuchiTB016.html',
         price: 9500,
         props: {
@@ -167,7 +167,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'smsvlKamaz6520',
         title: 'Самосвал КАМАЗ 6520',
-        img: '/img/smsvlKamaz6520.webp',
+        img: '/img/cat/samosavls.svg',
         link: '/technics/samosavls/smsvlKamaz6520.html',
         price: 11200,
         props: {
@@ -182,7 +182,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'smsvlKamaz65115',
         title: 'Самосвал КАМАЗ 65115',
-        img: '/img/smsvlKamaz65115.webp',
+        img: '/img/cat/samosavls.svg',
         link: '/technics/samosavls/smsvlKamaz65115.html',
         price: 9000,
         props: {
@@ -197,7 +197,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'smsvlReanaultKerax',
         title: 'Самосвал RENAULT KERAX 8Х4',
-        img: '/img/smsvlReanaultKerax.webp',
+        img: '/img/cat/samosavls.svg',
         link: '/technics/samosavls/smsvlReanaultKerax.html',
         price: 11200,
         props: {
@@ -220,7 +220,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusHitachi330',
         title: 'Экскаватор гусеничный HITACHI 330',
-        img: '/img/egusHitachi330.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusHitachi330.html',
         price: 18000,
         props: {
@@ -234,7 +234,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusHitachi300',
         title: 'Экскаватор гусеничный HITACHI 300',
-        img: '/img/egusHitachi300.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusHitachi300.html',
         price: 18000,
         props: {
@@ -248,7 +248,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusVOLVOEC240',
         title: 'Экскаватор гусеничный VOLVO EC 240 PRAIM',
-        img: '/img/egusVOLVOEC240.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusVOLVOEC240.html',
         price: 14400,
         props: {
@@ -262,7 +262,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusVOLVOEC240LOng',
         title: 'Экскаватор гусеничный длиннорукий VOLVO EC 240',
-        img: '/img/egusVOLVOEC240LOng.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusVOLVOEC240LOng.html',
         price: 17000,
         props: {
@@ -276,7 +276,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusJCBJS130',
         title: 'Экскаватор гусеничный JCB JS 130',
-        img: '/img/egusJCBJS130.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusJCBJS130.html',
         price: 12500,
         props: {
@@ -290,7 +290,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusJCBJS85',
         title: 'Экскаватор гусеничный JCB JS 85',
-        img: '/img/egusJCBJS85.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusJCBJS85.html',
         price: 12000,
         props: {
@@ -304,7 +304,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusHitachiZX1305G',
         title: 'Экскаватор гусеничный Hitachi ZX130-5G',
-        img: '/img/egusHitachiZX1305G.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusHitachiZX1305G.html',
         price: 12500,
         props: {
@@ -318,7 +318,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusJohnDeereE140LC',
         title: 'Экскаватор гусеничный John Deere E140 LC',
-        img: '/img/egusJohnDeereE140LC.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusJohnDeereE140LC.html',
         price: 13000,
         props: {
@@ -332,7 +332,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusJCBJS145',
         title: 'Экскаватор гусеничный JCB JS 145',
-        img: '/img/egusJCBJS145.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusJCBJS145.html',
         price: 13000,
         props: {
@@ -346,7 +346,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'egusVOLVOEC140BLC',
         title: 'Экскаватор гусеничный VOLVO EC140BLC',
-        img: '/img/egusVOLVOEC140BLC.webp',
+        img: '/img/cat/excavatory-gusenichnye.svg',
         link: '/technics/excavatory-gusenichnye/egusVOLVOEC140BLC.html',
         price: 13000,
         props: {
@@ -375,7 +375,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'ekolDoosan',
         title: 'Экскаватор колёсный DOOSAN SOLAR 180',
-        img: '/img/ekolDoosan.webp',
+        img: '/img/cat/excavatory-kolesnye.svg',
         link: '/technics/excavatory-kolesnye/ekolDoosan.html',
         price: 13600,
         props: {
@@ -390,7 +390,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'ekolJCBJS200W',
         title: 'Экскаватор колёсный JCB JS200W',
-        img: '/img/ekolJCBJS200W.webp',
+        img: '/img/cat/excavatory-kolesnye.svg',
         link: '/technics/excavatory-kolesnye/ekolJCBJS200W.html',
         price: 14000,
         props: {
@@ -405,7 +405,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'ekolVOLVOEW160',
         title: 'Экскаватор колёсный VOLVO EW 160',
-        img: '/img/ekolVOLVOEW160.webp',
+        img: '/img/cat/excavatory-kolesnye.svg',
         link: '/technics/excavatory-kolesnye/ekolVOLVOEW160.html',
         price: 13600,
         props: {
@@ -437,7 +437,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogTLB825',
         title: 'Экскаватор погрузчик Terex TLB 825',
-        img: '/img/epogTLB825.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogTLB825.html',
         price: 12000,
         props: {
@@ -454,7 +454,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogJSB4CX',
         title: 'Экскаватор погрузчик JCB 4CX',
-        img: '/img/epogJSB4CX.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogJSB4CX.html',
         price: 12000,
         props: {
@@ -471,7 +471,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogTEREX860',
         title: 'Экскаватор погрузчик TEREX 860',
-        img: '/img/epogTEREX860.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogTEREX860.html',
         price: 12000,
         props: {
@@ -488,7 +488,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogNewHollandB110B',
         title: 'Экскаватор погрузчик New Holland B110B',
-        img: '/img/epogNewHollandB110B.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogNewHollandB110B.html',
         price: 11000,
         props: {
@@ -505,7 +505,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogJohnDeere325SL',
         title: 'Экскаватор погрузчик John Deere 325SL',
-        img: '/img/epogJohnDeere325SL.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogJohnDeere325SL.html',
         price: 12000,
         props: {
@@ -522,7 +522,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogJCB2CX',
         title: 'Экскаватор погрузчик JCB 2CX',
-        img: '/img/epogJCB2CX.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogJCB2CX.html',
         price: 10000,
         props: {
@@ -539,7 +539,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogJCB3CX',
         title: 'Экскаватор погрузчик JCB 3CX',
-        img: '/img/epogJCB3CX.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogJCB3CX.html',
         price: 10500,
         props: {
@@ -556,7 +556,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogJCB4CX',
         title: 'Экскаватор погрузчик JCB 4CX',
-        img: '/img/epogJCB4CX.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogJCB4CX.html',
         price: 12000,
         props: {
@@ -573,7 +573,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogHyundaiH940S',
         title: 'Экскаватор погрузчик Hyundai H940S',
-        img: '/img/epogHyundaiH940S.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogHyundaiH940S.html',
         price: 11000,
         props: {
@@ -590,7 +590,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'epogVolvoBL71B',
         title: 'Экскаватор погрузчик Volvo BL71B',
-        img: '/img/epogVolvoBL71B.webp',
+        img: '/img/cat/excavatory-pogruzchiki.svg',
         link: '/technics/excavatory-pogruzchiki/epogVolvoBL71B.html',
         price: 12000,
         props: {
@@ -615,7 +615,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'teleskPogrBobcatT40170',
         title: 'Телескопический погрузчик BOBCAT T40170',
-        img: '/img/teleskPogrBobcatT40170.webp',
+        img: '/img/cat/teleskopicheskie-pogruzchiki.svg',
         link: '/technics/teleskopicheskie-pogruzchiki/teleskPogrBobcatT40170.html',
         price: 14000,
         props: {
@@ -628,7 +628,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'teleskPogrFaresinFH1442',
         title: 'Телескопический погрузчик FARESIN FH 14.42',
-        img: '/img/teleskPogrFaresinFH1442.webp',
+        img: '/img/cat/teleskopicheskie-pogruzchiki.svg',
         link: '/technics/teleskopicheskie-pogruzchiki/teleskPogrFaresinFH1442.html',
         price: 13500,
         props: {
@@ -641,7 +641,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'teleskPogrJCBAGRI',
         title: 'Телескопический погрузчик JCB AGRI 536-60',
-        img: '/img/teleskPogrJCBAGRI.webp',
+        img: '/img/cat/teleskopicheskie-pogruzchiki.svg',
         link: '/technics/teleskopicheskie-pogruzchiki/teleskPogrJCBAGRI.html',
         price: 13000,
         props: {
@@ -662,7 +662,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'minPogruzWECAN800D',
         title: 'Мини-погрузчик WECAN 800D',
-        img: '/img/minPogruzWECAN800D.webp',
+        img: '/img/cat/mini-pogruzchiki.svg',
         link: '/technics/mini-pogruzchiki/minPogruzWECAN800D.html',
         price: 8500,
         props: {
@@ -676,7 +676,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'minPogruzTAKEUCHI',
         title: 'Мини-погрузчик TAKEUCHI TL140',
-        img: '/img/minPogruzTAKEUCHI.webp',
+        img: '/img/cat/mini-pogruzchiki.svg',
         link: '/technics/mini-pogruzchiki/minPogruzTAKEUCHI.html',
         price: 12000,
         props: {
@@ -690,7 +690,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'minPogruzNEWHOLLANDL218',
         title: 'Мини-погрузчик NEW HOLLAND L 218',
-        img: '/img/minPogruzNEWHOLLANDL218.webp',
+        img: '/img/cat/mini-pogruzchiki.svg',
         link: '/technics/mini-pogruzchiki/minPogruzNEWHOLLANDL218.html',
         price: 8000,
         props: {
@@ -719,7 +719,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'frontPogruzVOLVOL90F',
         title: 'Фронтальный погрузчик VOLVO L90F',
-        img: '/img/frontPogruzVOLVOL90F.webp',
+        img: '/img/cat/frontalnye-pogruzchiki.svg',
         link: '/technics/frontalnye-pogruzchiki/frontPogruzVOLVOL90F.html',
         price: 12000,
         props: {
@@ -734,7 +734,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'frontPogruzLG936L',
         title: 'Фронтальный погрузчик LG936L',
-        img: '/img/frontPogruzLG936L.webp',
+        img: '/img/cat/frontalnye-pogruzchiki.svg',
         link: '/technics/frontalnye-pogruzchiki/frontPogruzLG936L.html',
         price: 12000,
         props: {
@@ -749,7 +749,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'frontPogruzLG933L',
         title: 'Фронтальный погрузчик LG933L',
-        img: '/img/frontPogruzLG933L.webp',
+        img: '/img/cat/frontalnye-pogruzchiki.svg',
         link: '/technics/frontalnye-pogruzchiki/frontPogruzLG933L.html',
         price: 12000,
         props: {
@@ -779,7 +779,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'mnpltrHD78',
         title: 'Манипулятор Hyundai HD 78',
-        img: '/img/mnpltrHD78.webp',
+        img: '/img/cat/manipulators.svg',
         link: '/technics/manipulators/mnpltrHD78.html',
         price: 7400,
         props: {
@@ -794,7 +794,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'mnpltrHD120',
         title: 'Манипулятор Hyundai HD 120',
-        img: '/img/mnpltrHD120.webp',
+        img: '/img/cat/manipulators.svg',
         link: '/technics/manipulators/mnpltrHD120.html',
         price: 11600,
         props: {
@@ -809,7 +809,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'mnpltrKamaz',
         title: 'Манипулятор КАМАЗ',
-        img: '/img/mnpltrKamaz.webp',
+        img: '/img/cat/manipulators.svg',
         link: '/technics/manipulators/mnpltrKamaz.html',
         price: 14000,
         props: {

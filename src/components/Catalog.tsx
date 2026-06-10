@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { EquipmentCategory } from '../data/types';
 import { propertyLabels } from '../data/types';
+import { categoryImages } from '../data/categoryImages';
 
 interface Props {
   categories: EquipmentCategory[];
@@ -88,11 +89,11 @@ export default function Catalog({
             <a key={item.id} className="card" href={item.link}>
               <img
                 className="card-image"
-                src={item.img}
+                src={categoryImages[cat.urlSlug] ?? item.img}
                 alt={item.title}
                 loading="lazy"
                 width={400}
-                height={280}
+                height={300}
               />
               <div className="card-body">
                 <h3 className="card-title">{item.title}</h3>
