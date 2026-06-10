@@ -26,16 +26,19 @@ This is a static Astro site (SSG) for Terex-Plus, a Russian construction equipme
 
 ### Routing
 
-- `/` — Homepage with filterable equipment catalog and contact form
+- `/` — Homepage with filterable equipment catalog, FAQ (FAQPage schema) and contact form
 - `/about`, `/contacts` — Static informational pages
-- `/technics/[category]` — Dynamic category listing pages (10 categories)
+- `/technics/[category]` — Dynamic category listing pages (10 categories) with SEO text blocks
 - `/technics/[category]/[machine]` — Dynamic individual equipment detail pages
+- `/articles` + `/articles/[slug]` — SEO articles from the `articles` content collection
 
 All routes are generated statically at build time from `src/data/equipment.ts`.
 
 ### Data Layer
 
 `src/data/equipment.ts` is the single source of truth for all equipment data — ~80+ machines across 10 categories with prices and technical specs. `src/data/types.ts` defines `EquipmentItem`, `EquipmentCategory`, and all 21+ property types with their Russian display labels. When adding or modifying equipment, only these two files need to change; the dynamic routes automatically pick up the data via `getStaticPaths()`.
+
+`src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links). Every category in `equipment.ts` must have a matching entry here. Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
 
 ### Components
 
@@ -55,5 +58,5 @@ Custom SCSS with no CSS framework. Main entry is `src/styles/main.scss` which im
 ### Integrations
 
 - `@astrojs/react` — React for interactive UI components
-- `@astrojs/sitemap` — Auto-generates sitemap at build time
+- `@astrojs/sitemap` — Auto-generates `sitemap-index.xml` at build time. Pinned to exactly 3.2.1: versions 3.3+ require Astro 5 and crash the build on Astro 4.
 - `imask` — Phone number input masking in the contact form

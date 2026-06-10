@@ -3,7 +3,7 @@ import TechMenu from './TechMenu.astro';
 import Modal from './Modal.astro';
 
 interface Props {
-  page?: 'index' | 'about' | 'contacts' | 'technics' | 'technicItem';
+  page?: 'index' | 'about' | 'contacts' | 'technics' | 'technicItem' | 'articles';
   showModal?: boolean;
 }
 
@@ -39,6 +39,9 @@ const { page, showModal = true } = Astro.props;
         </li>
         <li class="menu__item">
           <TechMenu activePage={page} />
+        </li>
+        <li class="menu__item">
+          <a class={page === 'articles' ? 'active' : ''} href="/articles.html">Статьи</a>
         </li>
         <li class="menu__item">
           <a class={page === 'about' ? 'active' : ''} href="/about.html">О компании</a>

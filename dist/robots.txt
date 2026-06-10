@@ -1,6 +1,6 @@
 User-agent: *
-Disallow: /build
 Disallow: /fonts
+Disallow: /mail.php
 Disallow: /telegram.php
 
-Sitemap: https://terex-plus.ru/sitemap.xml
+Sitemap: https://terex-plus.ru/sitemap-index.xml

@@ -7,6 +7,7 @@ import Modal from '../../../components/Modal.astro';
 import { categories } from '../../../data/equipment';
 import { propertyLabels } from '../../../data/types';
 import type { TechPropertyKey } from '../../../data/types';
+import { categorySeo } from '../../../data/seoTexts';
 
 export function getStaticPaths() {
   return categories.flatMap((cat) =>
@@ -18,9 +19,11 @@ export function getStaticPaths() {
 }
 
 const { category, item } = Astro.props;
+const seo = categorySeo[category.urlSlug];
+const priceFmt = item.price.toLocaleString('ru-RU');
 
-const pageTitle = `Аренда ${item.title} в СПб — Терекс-Плюс`;
-const description = `Аренда ${item.title} в Санкт-Петербурге и Ленинградской области — Цена за смену от ${item.price} руб. Аренда в круглосуточном режиме.`;
+const pageTitle = `Аренда ${item.title} в СПб от ${priceFmt} ₽/смена — Терекс-Плюс`;
+const description = `Аренда ${item.title} в Санкт-Петербурге и Ленинградской области от ${priceFmt} ₽ за смену (8 часов) с оператором. Подача 24/7, официальный договор. ☎ 8 (812) 989-03-32`;
 const canonical = `https://terex-plus.ru/technics/${category.urlSlug}/${item.id}.html`;
 
 const serviceLD = {
@@ -28,6 +31,7 @@ const serviceLD = {
   '@type': 'Service',
   name: `Аренда ${item.title} в Санкт-Петербурге`,
   description,
+  image: `https://terex-plus.ru${item.img}`,
   provider: {
     '@type': 'Organization',
     name: 'Терекс-Плюс',
@@ -39,6 +43,8 @@ const serviceLD = {
   ],
   offers: {
     '@type': 'Offer',
+    price: item.price,
+    priceCurrency: 'RUB',
     availability: 'https://schema.org/InStock',
     seller: { '@type': 'Organization', name: 'Терекс-Плюс' },
   },
@@ -98,6 +104,23 @@ const siblings = category.items.filter((i) => i.id.startsWith(prefix));
                 }
               </tbody>
             </table>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="technic__about">
+              <p>
+                {item.title} — аренда в Санкт-Петербурге и Ленинградской области от {
+                  priceFmt
+                }&nbsp;₽ за смену (8&nbsp;часов). {seo.machineNote}
+              </p>
+              <p>
+                Чтобы арендовать технику, позвоните по телефону
+                <a href="tel:8(812)989-03-32">8&nbsp;(812)&nbsp;989-03-32</a> или оставьте заявку — менеджер
+                уточнит задачу, рассчитает стоимость с доставкой и согласует время подачи. Смотрите также
+                другие <a href={`/technics/${category.urlSlug}.html`}>{seo.genitive} в аренду</a>.
+              </p>
+            </div>
           </div>
         </div>
         {

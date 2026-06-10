@@ -3,19 +3,28 @@ const BASE_URL = 'https://terex-plus.ru';
 
 interface Props {
   pageName?: string;
+  pageUrl?: string;
   categoryName?: string;
   categoryUrl?: string;
   itemName?: string;
 }
 
-const { pageName, categoryName, categoryUrl, itemName } = Astro.props;
+const { pageName, pageUrl, categoryName, categoryUrl, itemName } = Astro.props;
 
 // Build breadcrumb JSON-LD
 const breadcrumbItems: object[] = [
   { '@type': 'ListItem', position: 1, name: 'Главная', item: `${BASE_URL}/` },
 ];
 
-if (itemName && categoryName && categoryUrl) {
+if (itemName && pageName && pageUrl) {
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position: 2,
+    name: pageName,
+    item: `${BASE_URL}${pageUrl}`,
+  });
+  breadcrumbItems.push({ '@type': 'ListItem', position: 3, name: itemName });
+} else if (itemName && categoryName && categoryUrl) {
   breadcrumbItems.push({
     '@type': 'ListItem',
     position: 2,
@@ -60,7 +69,14 @@ const breadcrumbLD = {
               <a href="/">Главная</a>
             </li>
             {
-              itemName && categoryName && categoryUrl ? (
+              itemName && pageName && pageUrl ? (
+                <>
+                  <li class="breadcrumb__item">
+                    <a href={pageUrl}>{pageName}</a>
+                  </li>
+                  <li class="breadcrumb__item breadcrumb__item--active">{itemName}</li>
+                </>
+              ) : itemName && categoryName && categoryUrl ? (
                 <>
                   <li class="breadcrumb__item">
                     <a href="/technics.html">Спецтехника</a>

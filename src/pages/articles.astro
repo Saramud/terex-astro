@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Strip from '../components/Strip.astro';
+import Footer from '../components/Footer.astro';
+
+const articles = (await getCollection('articles')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const title = 'Статьи об аренде спецтехники — Терекс-Плюс';
+const description =
+  'Полезные статьи об аренде спецтехники в Санкт-Петербурге: как выбрать технику под задачу, из чего складывается цена, как оформить аренду с оператором.';
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout title={title} description={description} canonical="https://terex-plus.ru/articles.html">
+  <Header page="articles" />
+  <Strip pageName="Статьи" />
+
+  <main>
+    <section class="articles">
+      <div class="container">
+        <h1 class="technics__title text-center">Статьи об аренде спецтехники</h1>
+        <div class="articles__list">
+          {
+            articles.map((article) => (
+              <a class="article-card" href={`/articles/${article.slug}.html`}>
+                <time class="article-card__date" datetime={article.data.date.toISOString()}>
+                  {formatDate(article.data.date)}
+                </time>
+                <h2 class="article-card__title">{article.data.title}</h2>
+                <p class="article-card__desc">{article.data.description}</p>
+                <span class="card-more">Читать</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer showModal={true} />
+</BaseLayout>

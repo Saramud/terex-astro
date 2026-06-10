@@ -5,6 +5,7 @@ import Strip from '../../components/Strip.astro';
 import Footer from '../../components/Footer.astro';
 import Catalog from '../../components/Catalog';
 import { categories } from '../../data/equipment';
+import { categorySeo } from '../../data/seoTexts';
 
 export function getStaticPaths() {
   return categories.map((cat) => ({
@@ -14,13 +15,36 @@ export function getStaticPaths() {
 }
 
 const { category } = Astro.props;
+const seo = categorySeo[category.urlSlug];
 
-const title = `Аренда: ${category.name} в Санкт-Петербурге — Терекс-Плюс`;
-const description = `Аренда ${category.name.toLowerCase()} в Санкт-Петербурге и Ленинградской области. Компания Терекс-Плюс — собственный автопарк, профессиональные операторы, работаем 24/7.`;
-const canonical = `https://terex-plus.ru/technics/${category.urlSlug}.html`;
+const BASE_URL = 'https://terex-plus.ru';
+const minPrice = Math.min(...category.items.map((i) => i.price));
+const minPriceFmt = minPrice.toLocaleString('ru-RU');
+
+const title = `Аренда ${seo.genitive} в СПб от ${minPriceFmt} ₽/смена — Терекс-Плюс`;
+const description = `Аренда ${seo.genitive} в Санкт-Петербурге и Ленинградской области от ${minPriceFmt} ₽ за смену (8 часов). В парке ${category.items.length} ед. техники, оператор включён в стоимость, подача 24/7. ☎ 8 (812) 989-03-32`;
+const canonical = `${BASE_URL}/technics/${category.urlSlug}.html`;
+
+const itemListLD = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Аренда ${seo.genitive} в Санкт-Петербурге`,
+  numberOfItems: category.items.length,
+  itemListElement: category.items.map((item, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: item.title,
+    url: `${BASE_URL}${item.link}`,
+  })),
+};
 ---
 
-<BaseLayout title={title} description={description} canonical={canonical}>
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  jsonLdExtra={[itemListLD]}
+>
   <Header page="technics" />
   <Strip categoryName={category.name} categoryUrl={`/technics/${category.urlSlug}.html`} />
 
@@ -29,10 +53,37 @@ const canonical = `https://terex-plus.ru/technics/${category.urlSlug}.html`;
       <div class="container">
         <div class="row text-center">
           <div class="col-sm">
-            <h1 class="technics__title" id={category.urlSlug}>{category.name}</h1>
+            <h1 class="technics__title" id={category.urlSlug}>
+              Аренда {seo.genitive} в Санкт-Петербурге
+            </h1>
+            <p class="technics__subtitle">
+              {category.items.length} ед. техники в собственном парке — от {minPriceFmt} ₽ за смену
+            </p>
           </div>
         </div>
         <Catalog client:load categories={[category]} showFilters={false} />
+      </div>
+    </section>
+
+    <section class="seo-text">
+      <div class="container">
+        <div class="seo-text__inner">
+          {seo.intro.map((p) => <p>{p}</p>)}
+          <h2>{seo.tasksTitle}</h2>
+          <ul>
+            {seo.tasks.map((t) => <li>{t}</li>)}
+          </ul>
+          <p class="seo-text__related">
+            Смотрите также: {
+              seo.related.map((r, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={r.href}>{r.label}</a>
+                </>
+              ))
+            }.
+          </p>
+        </div>
       </div>
     </section>
   </main>

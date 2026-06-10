@@ -1,0 +1,74 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Strip from '../../components/Strip.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const articles = await getCollection('articles');
+  return articles.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+const { Content } = await article.render();
+
+const canonical = `https://terex-plus.ru/articles/${article.slug}.html`;
+
+const articleLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: article.data.title,
+  description: article.data.description,
+  datePublished: article.data.date.toISOString(),
+  inLanguage: 'ru-RU',
+  mainEntityOfPage: canonical,
+  author: { '@type': 'Organization', name: 'Терекс-Плюс', url: 'https://terex-plus.ru' },
+  publisher: {
+    '@type': 'Organization',
+    name: 'Терекс-Плюс',
+    logo: { '@type': 'ImageObject', url: 'https://terex-plus.ru/img/logo_3.webp' },
+  },
+};
+
+const dateFmt = article.data.date.toLocaleDateString('ru-RU', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<BaseLayout
+  title={`${article.data.title} — Терекс-Плюс`}
+  description={article.data.description}
+  canonical={canonical}
+  jsonLdExtra={[articleLD]}
+>
+  <Header page="articles" />
+  <Strip pageName="Статьи" pageUrl="/articles.html" itemName={article.data.title} />
+
+  <main>
+    <article class="article">
+      <div class="container">
+        <div class="article__inner">
+          <h1>{article.data.title}</h1>
+          <time class="article__date" datetime={article.data.date.toISOString()}>{dateFmt}</time>
+          <div class="article__content">
+            <Content />
+          </div>
+          <div class="article__cta">
+            <p>Нужна техника под вашу задачу? Подберём и рассчитаем стоимость за 10 минут.</p>
+            <button class="btn btn-warning" type="button" data-modal="#exampleModalCenter">
+              Отправить заявку
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <Footer showModal={true} />
+</BaseLayout>
