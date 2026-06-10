@@ -99,7 +99,24 @@ const organizationLD = {
   <body>
     <slot />
 
+    <div class="mobile-cta">
+      <a class="mobile-cta__call" href="tel:8(812)989-03-32">Позвонить</a>
+      <button class="mobile-cta__request" type="button" data-modal="#exampleModalCenter">
+        Оставить заявку
+      </button>
+    </div>
+
     <script>
+      // Close modals with Escape (bound once — survives View Transitions)
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          document.querySelectorAll<HTMLElement>('.modal.show').forEach((m) => {
+            m.classList.remove('show');
+            document.body.style.overflow = '';
+          });
+        }
+      });
+
       // Modal open/close
       document.addEventListener('astro:page-load', () => {
         document.querySelectorAll<HTMLElement>('[data-modal]').forEach((trigger) => {
@@ -111,6 +128,23 @@ const organizationLD = {
             if (modal) {
               modal.classList.add('show');
               document.body.style.overflow = 'hidden';
+            } else {
+              // No modal on this page — scroll to the inline form instead
+              const form = document.querySelector<HTMLElement>('#requestform');
+              if (form) {
+                form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                const sendBtn = document.getElementById('sendMail');
+                if (sendBtn) {
+                  sendBtn.style.animation = 'blink 0.7s ease-in-out 3';
+                  sendBtn.addEventListener(
+                    'animationend',
+                    () => {
+                      sendBtn.style.animation = '';
+                    },
+                    { once: true }
+                  );
+                }
+              }
             }
           });
         });
@@ -133,19 +167,6 @@ const organizationLD = {
             }
           });
         });
-
-        document.addEventListener(
-          'keydown',
-          (e) => {
-            if (e.key === 'Escape') {
-              document.querySelectorAll<HTMLElement>('.modal.show').forEach((m) => {
-                m.classList.remove('show');
-                document.body.style.overflow = '';
-              });
-            }
-          },
-          { once: true }
-        );
 
         // Smooth scroll for .indexPage links
         document.querySelectorAll<HTMLElement>('.indexPage').forEach((el) => {

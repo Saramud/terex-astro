@@ -6,92 +6,89 @@
 
 // ---- Catalog section (index page) ----
 .technics {
-  padding: 40px 0;
+  padding: $sp-4 0 $sp-5;
   background-color: $gray-light;
 
   &__title {
-    font-size: clamp(20px, 3vw, 28px);
+    font-size: $fs-h2;
     font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 8px;
+    margin-bottom: $sp-1;
   }
 }
 
 // ---- Advantages section ----
 .information {
-  padding: 48px 0;
+  padding: $sp-5 0;
 
   .info__title {
-    font-size: clamp(20px, 3vw, 26px);
+    font-size: $fs-h2;
     font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 32px;
+    margin-bottom: $sp-4;
   }
 }
 
-.prop {
-  width: 100%;
-}
-
-.advantages_list {
+.advantages-grid {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-
-  li {
-    width: 100%;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $sp-4 $sp-3;
 }
 
-.text-change {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
+.advantage {
+  text-align: center;
 
-  img {
-    width: clamp(40px, 8vw, 65px);
-    flex-shrink: 0;
-  }
-
-  b {
-    display: block;
-    line-height: $line-height-tight;
-  }
-
-  .first {
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
+  &__icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba($main-color, 0.18);
     color: $black;
+    margin-bottom: $sp-2;
+
+    svg {
+      width: 30px;
+      height: 30px;
+    }
   }
 
-  .second {
-    font-size: 13px;
-    font-weight: 400;
+  &__title {
+    display: block;
+    font-size: $fs-base;
+    font-weight: 700;
+    line-height: $line-height-tight;
+    margin-bottom: 6px;
+  }
+
+  &__text {
+    font-size: $fs-md;
     color: $gray;
-    margin-top: 4px;
+    line-height: $line-height-tight;
+    margin: 0;
+    max-width: 36ch;
+    margin-inline: auto;
   }
 }
 
 // ---- Info-second section ----
 .information-second {
-  padding: 48px 0;
+  padding: $sp-5 0;
   background-color: $gray-light;
 
   .info__title {
-    font-size: clamp(18px, 3vw, 24px);
+    font-size: $fs-h2;
     font-weight: 700;
-    text-transform: uppercase;
-    margin-bottom: 16px;
+    margin-bottom: $sp-2;
   }
 
   .advantages {
-    max-width: 640px;
-    margin: 0 auto 24px;
-    font-size: 15px;
+    max-width: 70ch;
+    margin: 0 auto $sp-3;
+    font-size: $fs-base;
     line-height: $line-height-body;
   }
 
@@ -109,30 +106,95 @@
 
 // ---- Request form section ----
 .request {
-  padding: 48px 0;
-  background-color: $main-color;
+  padding: $sp-5 0;
+  background: linear-gradient(135deg, $dark-bg 0%, #2d2d2d 100%);
 
-  .col-sm-12,
-  .col-12 {
-    padding: 0;
+  .request__form {
+    background-color: $white;
+    border-radius: $radius;
+    padding: $sp-4 $sp-3;
+    max-width: 760px;
+    margin: 0 auto;
+    box-shadow: $shadow-card;
+
+    .legend {
+      font-size: $fs-xl;
+      font-weight: 700;
+      text-align: center;
+      margin: 0 0 $sp-3;
+    }
+  }
+}
+
+// ---- Technic detail page ----
+.technic {
+  padding: $sp-3 0 $sp-5;
+
+  &__title {
+    font-size: $fs-h2;
+    font-weight: 700;
+    margin-bottom: $sp-3;
+  }
+
+  &__photo img {
+    max-width: 100%;
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+    margin: 0 auto $sp-3;
+    display: block;
+  }
+
+  &__buy {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $sp-2;
+    padding: $sp-2;
+    background-color: $gray-light;
+    border-radius: $radius;
+    margin-bottom: $sp-3;
+  }
+
+  &__price {
+    margin: 0;
+    color: $gray;
+    font-size: $fs-md;
+
+    b {
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      color: $black;
+    }
+  }
+
+  &__price-unit {
+    display: block;
+    font-size: $fs-xs;
+    margin-top: 2px;
+  }
+
+  &__specs-title {
+    font-size: $fs-base;
+    font-weight: 700;
+    margin-bottom: 12px;
   }
 }
 
 // ---- About page ----
 .about {
   margin-top: 24px;
-  box-shadow: rgb(163, 163, 163) 0 -9px 4px -1px inset;
   min-height: 350px;
   padding: 24px 0;
 
   h2 {
-    font-size: clamp(20px, 3vw, 30px);
-    font-weight: 600;
-    text-transform: uppercase;
-    border-bottom: 1px solid $black;
+    font-size: $fs-h2;
+    font-weight: 700;
+    border-bottom: 1px solid $gray-border;
     text-align: center;
     padding-bottom: 12px;
-    margin-bottom: 24px;
+    margin-bottom: $sp-3;
   }
 
   p {
@@ -163,13 +225,12 @@
 
 // ---- Contacts page ----
 .contacts {
-  padding: 32px 0;
+  padding: $sp-4 0;
 
   .info__title {
-    font-size: clamp(18px, 3vw, 24px);
-    text-transform: uppercase;
-    font-weight: 600;
-    margin: 20px 0 32px;
+    font-size: $fs-h2;
+    font-weight: 700;
+    margin: 20px 0 $sp-4;
   }
 
   .contact {
@@ -180,7 +241,6 @@
     .icon {
       text-decoration: none;
       color: $black;
-      text-transform: uppercase;
       font-weight: 600;
       font-size: clamp(14px, 2vw, 20px);
 
@@ -201,7 +261,7 @@
     }
 
     &:hover .icon {
-      color: $main-color;
+      color: $accent-text;
     }
     &:last-child {
       margin-bottom: 48px;
@@ -254,7 +314,7 @@
       transition: color 0.2s;
 
       &:hover {
-        color: $main-color-dark;
+        color: $accent-text;
         text-decoration: underline;
       }
 

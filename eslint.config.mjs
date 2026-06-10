@@ -14,6 +14,21 @@ export default tseslint.config(
   ...astro.configs.recommended,
 
   {
+    // Node-скрипты с puppeteer: page.evaluate выполняется в браузере
+    files: ['scripts/**/*.mjs'],
+    languageOptions: {
+      globals: {
+        console: 'readonly',
+        process: 'readonly',
+        setTimeout: 'readonly',
+        document: 'readonly',
+        window: 'readonly',
+        getComputedStyle: 'readonly',
+      },
+    },
+  },
+
+  {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
       react: reactPlugin,

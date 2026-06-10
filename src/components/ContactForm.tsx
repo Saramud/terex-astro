@@ -88,7 +88,9 @@ export default function ContactForm({
       )}
       <div className="form-row text-center">
         <div className={`${colClass} user user__name`}>
-          <label htmlFor="name" className="form-label">Ваше имя</label>
+          <label htmlFor="name" className="form-label">
+            Ваше имя
+          </label>
           <input
             id="name"
             className="form-control"
@@ -116,7 +118,9 @@ export default function ContactForm({
         {variant === 'request' ? (
           <>
             <div className={`${colClass} user user__technics`}>
-              <label htmlFor="technics" className="form-label">Тип техники</label>
+              <label htmlFor="technics" className="form-label">
+                Тип техники
+              </label>
               <input
                 id="technics"
                 className="form-control"
@@ -133,7 +137,9 @@ export default function ContactForm({
               </datalist>
             </div>
             <div className={`${colClass} user user__rent`}>
-              <label htmlFor="rent" className="form-label">Срок аренды</label>
+              <label htmlFor="rent" className="form-label">
+                Срок аренды
+              </label>
               <input
                 id="rent"
                 className="form-control"
@@ -146,7 +152,9 @@ export default function ContactForm({
         ) : (
           <>
             <div className={`${colClass} user`}>
-              <label htmlFor="mail" className="form-label">Email</label>
+              <label htmlFor="mail" className="form-label">
+                Email
+              </label>
               <input
                 id="mail"
                 className="form-control"
@@ -156,7 +164,9 @@ export default function ContactForm({
               />
             </div>
             <div className="col-sm-12 user">
-              <label htmlFor="text" className="form-label">Текст сообщения</label>
+              <label htmlFor="text" className="form-label">
+                Текст сообщения
+              </label>
               <textarea
                 id="text"
                 className="form-control"
@@ -181,7 +191,7 @@ export default function ContactForm({
 
         <button
           id="sendMail"
-          className={compact ? 'btn btn_modal text-left' : 'btn col-lg-2 col-sm-4'}
+          className={compact ? 'btn' : 'btn col-lg-2 col-sm-4'}
           type="submit"
           disabled={status === 'sending'}
           data-sent={status === 'sent' || undefined}

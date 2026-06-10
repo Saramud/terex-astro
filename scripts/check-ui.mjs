@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer';
-import { writeFileSync, mkdirSync } from 'fs';
+import { mkdirSync } from 'fs';
 
-const BASE = 'http://127.0.0.1:4321';
+const BASE = process.env.CHECK_UI_BASE ?? 'http://localhost:4321';
 const SHOTS = './scripts/screenshots';
 mkdirSync(SHOTS, { recursive: true });
 
@@ -19,7 +19,10 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1280, height: 800 });
 
 const issues = [];
-const log = (msg) => { console.log(msg); issues.push(msg); };
+const log = (msg) => {
+  console.log(msg);
+  issues.push(msg);
+};
 
 // ── Helper ──────────────────────────────────────────────────────────────────
 async function shot(name) {
@@ -28,9 +31,12 @@ async function shot(name) {
 
 async function checkFocusVisible(selector, label) {
   const el = await page.$(selector);
-  if (!el) { log(`  ⚠ не найден: ${selector}`); return; }
-  await page.evaluate(sel => document.querySelector(sel)?.focus(), selector);
-  const outline = await page.evaluate(sel => {
+  if (!el) {
+    log(`  ⚠ не найден: ${selector}`);
+    return;
+  }
+  await page.evaluate((sel) => document.querySelector(sel)?.focus(), selector);
+  const outline = await page.evaluate((sel) => {
     const s = getComputedStyle(document.querySelector(sel));
     return s.outlineStyle + ' ' + s.outlineWidth + ' ' + s.outlineColor;
   }, selector);
@@ -42,7 +48,7 @@ async function checkFocusVisible(selector, label) {
 }
 
 async function checkLabel(inputId) {
-  const has = await page.evaluate(id => !!document.querySelector(`label[for="${id}"]`), inputId);
+  const has = await page.evaluate((id) => !!document.querySelector(`label[for="${id}"]`), inputId);
   if (!has) log(`  ✗ нет <label> для #${inputId}`);
   else console.log(`  ✓ label OK для #${inputId}`);
 }
@@ -83,7 +89,7 @@ if (headerBtn) {
 
 // Скролл к форме
 await page.evaluate(() => document.querySelector('#requestform')?.scrollIntoView());
-await new Promise(r => setTimeout(r, 300));
+await new Promise((r) => setTimeout(r, 300));
 await shot('03-home-form');
 
 // Попытка отправить пустую форму — проверка ошибки
@@ -95,7 +101,7 @@ if (submitBtn) {
     if (el) el.value = '';
   });
   await submitBtn.click();
-  await new Promise(r => setTimeout(r, 300));
+  await new Promise((r) => setTimeout(r, 300));
   const errorEl = await page.$('#error');
   const hasError = !!errorEl;
   const phoneHasErrorClass = await page.evaluate(() =>
@@ -121,7 +127,10 @@ await checkFocusVisible('.breadcrumb__item a', 'хлебная крошка');
 
 // ── 3. СТРАНИЦА МАШИНЫ ───────────────────────────────────────────────────────
 console.log('\n=== Страница машины ===');
-await page.goto(`${BASE}/technics/autokrans/atkrnKAMAZVEZDEHOD.html`, { waitUntil: 'networkidle0', timeout: 20000 });
+await page.goto(`${BASE}/technics/autokrans/atkrnKAMAZVEZDEHOD.html`, {
+  waitUntil: 'networkidle0',
+  timeout: 20000,
+});
 await shot('06-machine');
 await checkFocusVisible('.btn-warning', 'Арендовать');
 
@@ -130,12 +139,14 @@ const rentBtn = await page.$('.btn-warning');
 if (rentBtn) {
   const box = await rentBtn.boundingBox();
   if (box && box.width > 80 && box.height > 36) {
-    console.log(`  ✓ кнопка Арендовать видима: ${Math.round(box.width)}x${Math.round(box.height)}px`);
+    console.log(
+      `  ✓ кнопка Арендовать видима: ${Math.round(box.width)}x${Math.round(box.height)}px`
+    );
   } else {
     log(`  ✗ кнопка Арендовать слишком мала: ${JSON.stringify(box)}`);
   }
   await rentBtn.click();
-  await new Promise(r => setTimeout(r, 500));
+  await new Promise((r) => setTimeout(r, 500));
   await shot('07-machine-modal');
   const modal = await page.$('.modal.show');
   if (modal) console.log('  ✓ модалка открылась при клике Арендовать');
@@ -150,13 +161,25 @@ await shot('08-mobile-home');
 await page.goto(`${BASE}/technics/autokrans.html`, { waitUntil: 'networkidle0' });
 await shot('09-mobile-category');
 
-// Хедер на мобильном
-const infoBlock = await page.$('.info');
-if (infoBlock) {
-  const align = await page.evaluate(() => getComputedStyle(document.querySelector('.info')).alignItems);
-  if (align === 'center') console.log('  ✓ .info отцентрован на мобильном');
-  else log(`  ✗ .info не отцентрован: align-items = ${align}`);
+// Хедер на мобильном: бургер и нижняя CTA-панель
+const navToggle = await page.$('.nav-toggle');
+if (navToggle) {
+  const visible = await page.evaluate(() => {
+    const el = document.querySelector('.nav-toggle');
+    return el ? getComputedStyle(el).display !== 'none' : false;
+  });
+  if (visible) console.log('  ✓ бургер-кнопка видима на мобильном');
+  else log('  ✗ бургер-кнопка скрыта на мобильном');
+} else {
+  log('  ✗ не найдена кнопка .nav-toggle');
 }
+
+const mobileCta = await page.evaluate(() => {
+  const el = document.querySelector('.mobile-cta');
+  return el ? getComputedStyle(el).display !== 'none' : false;
+});
+if (mobileCta) console.log('  ✓ нижняя CTA-панель видима на мобильном');
+else log('  ✗ нижняя CTA-панель не видима (.mobile-cta)');
 
 // ── 5. ИТОГ ──────────────────────────────────────────────────────────────────
 console.log('\n=== ИТОГ ===');
@@ -164,7 +187,7 @@ if (issues.length === 0) {
   console.log('✅ Проблем не обнаружено');
 } else {
   console.log(`⚠ Найдено ${issues.length} проблем:`);
-  issues.forEach(i => console.log(' ', i));
+  issues.forEach((i) => console.log(' ', i));
 }
 
 await browser.close();

@@ -26,7 +26,7 @@
   }
 
   &:hover {
-    color: $main-color;
+    color: $accent-text;
   }
 
   &:focus-visible {
@@ -109,110 +109,274 @@
   }
 }
 
-// ---- Info block (phone + button) ----
-.info {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-// ---- Inner page header (header.pug template) ----
+// ---- Site header (all pages) ----
 .header_template {
+  position: sticky;
+  top: 0;
+  z-index: 500;
   background-color: $white;
   border-bottom: 3px solid $main-color;
-  padding: 12px 0 0;
+}
+
+.header__bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0 $sp-2;
+  padding-top: 8px;
+  padding-bottom: 8px;
 
   .logo img {
-    width: 70px;
+    width: 48px;
   }
 
-  .info {
-    align-items: center;
+  @media (min-width: $bp-lg) {
+    flex-wrap: nowrap;
+  }
+}
+
+.site-nav {
+  @media (min-width: $bp-lg) {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
   }
 
-  .logo img {
-    width: 55px;
-  }
+  @media (max-width: $bp-lg - 1) {
+    display: none;
+    order: 3;
+    flex-basis: 100%;
+    border-top: 1px solid $gray-border;
+    margin-top: 8px;
 
-  @media (min-width: $bp-sm) {
-    .logo img {
-      width: 70px;
+    &.open {
+      display: block;
     }
   }
 }
 
-// ---- Index page hero header ----
-header#header.header {
-  background-color: $white;
-  padding-top: 12px;
+.header__contacts {
+  display: none;
+  align-items: center;
+  gap: $sp-2;
+  margin-left: auto;
 
-  > .container {
-    border-bottom: 3px solid $main-color;
-    padding-bottom: 0;
+  @media (min-width: $bp-md) {
+    display: flex;
+  }
+
+  @media (max-width: $bp-lg - 1) {
+    order: 1;
   }
 }
 
-.header__phone {
-  background-color: $black;
+// ---- Burger toggle ----
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 12px 8px;
+  order: 2;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: $black;
+    border-radius: 1px;
+    transition:
+      transform 0.2s,
+      opacity 0.2s;
+  }
+
+  &.open {
+    span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 3px solid $main-color;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (max-width: $bp-lg - 1) {
+    display: flex;
+  }
+
+  @media (max-width: $bp-md - 1) {
+    margin-left: auto;
+  }
+}
+
+// Sticky header offset for anchor scrolling
+[id] {
+  scroll-margin-top: 90px;
+}
+
+// ---- Mobile bottom CTA bar ----
+.mobile-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 600;
+  gap: 8px;
+  background-color: $white;
+  border-top: 1px solid $gray-border;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
+
+  a,
+  button {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-radius: $radius-sm;
+    font-weight: 700;
+    font-size: $fs-md;
+  }
+
+  &__call {
+    background-color: $main-color;
+    color: $black;
+
+    &:hover {
+      background-color: $main-color-dark;
+      color: $black;
+    }
+  }
+
+  &__request {
+    border: 2px solid $black;
+    background-color: $white;
+    color: $black;
+  }
+}
+
+@media (max-width: $bp-md - 1) {
+  .mobile-cta {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 64px;
+  }
+}
+
+.hero {
+  background: linear-gradient(135deg, $dark-bg 0%, #2d2d2d 100%);
   color: $white;
-  padding: 24px 0;
-  position: relative;
   overflow: hidden;
 
-  .phone {
-    position: relative;
-    z-index: 2;
-
-    h1 {
-      font-size: clamp(18px, 3vw, 32px);
-      font-weight: 700;
-      color: $white;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    a {
-      display: inline-block;
-      font-size: clamp(22px, 4vw, 40px);
-      font-weight: 700;
-      color: $main-color;
-      text-decoration: none;
-      margin-bottom: 16px;
-
-      &:hover {
-        color: color.adjust($main-color, $lightness: -10%);
-      }
-    }
-  }
-
-  img.excavator {
-    position: absolute;
-    right: -40px;
-    bottom: -20px;
-    width: clamp(280px, 55%, 600px);
-    height: auto;
-    opacity: 0.25;
-    z-index: 1;
-    pointer-events: none;
-
-    @media (min-width: $bp-lg) {
-      opacity: 0.5;
-      right: 0;
-      bottom: -30px;
-      width: 50%;
-    }
-  }
-}
-
-// ---- Responsive nav ----
-@media (max-width: $bp-md - 1) {
-  .menu {
+  &__inner {
+    display: flex;
     flex-direction: column;
     align-items: center;
+    gap: $sp-2;
+    padding: $sp-4 0 0;
+
+    @media (min-width: $bp-md) {
+      flex-direction: row;
+      align-items: flex-end;
+      gap: $sp-3;
+      padding: $sp-5 0 0;
+    }
   }
 
-  .menu__item a {
-    padding: 10px 20px;
+  &__content {
+    flex: 1 1 55%;
+    text-align: center;
+    padding-bottom: $sp-3;
+
+    @media (min-width: $bp-md) {
+      text-align: left;
+      padding-bottom: $sp-5;
+    }
+
+    h1 {
+      font-size: $fs-h1;
+      font-weight: 700;
+      color: $white;
+      line-height: 1.15;
+      margin-bottom: $sp-2;
+    }
+  }
+
+  &__subtitle {
+    font-size: clamp($fs-md, 2vw, $fs-lg);
+    line-height: $line-height-body;
+    color: rgba(255, 255, 255, 0.75);
+    max-width: 52ch;
+    margin: 0 auto $sp-3;
+
+    @media (min-width: $bp-md) {
+      margin-left: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+
+    @media (min-width: $bp-md) {
+      justify-content: flex-start;
+    }
+  }
+
+  &__img {
+    flex: 1 1 45%;
+    align-self: flex-end;
+    width: min(90%, 420px);
+    height: auto;
+    margin: 0 auto;
+
+    @media (min-width: $bp-md) {
+      width: 45%;
+      max-width: 520px;
+      margin: 0;
+    }
+  }
+
+  &__trust {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 12px 0;
+  }
+
+  &__trust-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px $sp-4;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: $fs-md;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &::before {
+        content: '✓';
+        color: $main-color;
+        font-weight: 700;
+      }
+    }
   }
 }

@@ -30,3 +30,30 @@
     -webkit-overflow-scrolling: touch;
   }
 }
+
+// Zebra specs table (technic detail page)
+.specs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: $fs-md;
+
+  td {
+    padding: 8px 12px;
+    vertical-align: top;
+  }
+
+  td:first-child {
+    color: $gray;
+    text-align: left;
+  }
+
+  td:last-child {
+    font-weight: 600;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  tbody tr:nth-child(odd) {
+    background-color: $gray-light;
+  }
+}

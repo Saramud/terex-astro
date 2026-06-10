@@ -15,6 +15,24 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    animation: modal-fade 0.2s ease-out;
+
+    .modal-content {
+      animation: modal-rise 0.25s ease-out;
+    }
+  }
+}
+
+@keyframes modal-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes modal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
   }
 }
 
@@ -58,18 +76,16 @@
 
   h5 {
     margin: 0 auto;
-    font-size: 22px;
-    font-weight: 600;
+    font-size: $fs-xl;
+    font-weight: 700;
     text-align: center;
-    border-bottom: 2px solid $black;
-    padding: 0 10px 4px;
+    padding: 0 10px;
     width: auto;
   }
 }
 
 .modal-body {
-  padding: 16px 20px;
-  background-color: $main-color;
+  padding: 20px;
 
   .user {
     margin-bottom: 16px;
@@ -78,7 +94,6 @@
 
 .modal-footer {
   padding: 0 20px 20px;
-  background-color: $main-color;
   display: flex;
   justify-content: center;
 }

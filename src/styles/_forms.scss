@@ -68,16 +68,15 @@
 .warning {
   line-height: $line-height-tight;
   color: $gray;
-  font-size: 10px;
+  font-size: $fs-xs;
 }
 
 .request__form {
   button[type='button'],
   button#sendMail {
     background-color: $main-color;
-    text-transform: uppercase;
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 700;
+    font-size: $fs-base;
     height: 48px;
     width: 100%;
     border: none;
@@ -88,8 +87,7 @@
       color 0.2s;
 
     &:hover {
-      background-color: $gray;
-      color: $main-color;
+      background-color: $main-color-dark;
     }
 
     &:disabled {

@@ -56,62 +56,62 @@ export default function Catalog({
   return (
     <div>
       {showFilters && (
-        <div className="row text-center">
-          <div className="techics__menu col-12">
-            <ul className="technics__menu">
-              {categories.map((cat) => (
-                <li key={cat.id}>
-                  <button
-                    id={cat.id}
-                    type="button"
-                    className={`btn techs${!showAll && activeCategoryId === cat.id ? ' techs-active' : ''}`}
-                    onClick={() => selectCategory(cat.id)}
-                  >
-                    {cat.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <ul className="technics__menu">
+          <li>
+            <button
+              id="allTechnicsBtn"
+              type="button"
+              className={`btn techs${showAll ? ' techs-active' : ''}`}
+              onClick={() => selectCategory('allTechnics')}
+            >
+              Вся техника
+            </button>
+          </li>
+          {categories.map((cat) => (
+            <li key={cat.id}>
+              <button
+                id={cat.id}
+                type="button"
+                className={`btn techs${!showAll && activeCategoryId === cat.id ? ' techs-active' : ''}`}
+                onClick={() => selectCategory(cat.id)}
+              >
+                {cat.name}
+              </button>
+            </li>
+          ))}
+        </ul>
       )}
 
-      <div className="row justify-content-center">
-        <div className="technics__menu-items text-center">
-          <div className="technics__menu-item">
-            {visibleCategories.map((cat) =>
-              cat.items.map((item) => (
-                <a key={item.id} className="card border-warning" href={item.link}>
-                  <img
-                    className="card-image"
-                    src={item.img}
-                    alt={item.title}
-                    loading="lazy"
-                    width={400}
-                    height={280}
-                  />
-                  <h3 className="text-dark">{item.title}</h3>
-                  <div className="card-header">от {item.price} р. за смену</div>
-                  <div className="card-body">
-                    <table className="table table-sm table-hover">
-                      <tbody>
-                        {cat.properties.slice(0, MAX_CARD_PROPS).map((prop) => (
-                          <tr key={prop}>
-                            <td className="text-dark text-left">{propertyLabels[prop]}</td>
-                            <td className="text-dark text-right">{item.props[prop] ?? '—'}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <div className="btn btn-information">
-                      <span>Подробнее</span>
-                    </div>
-                  </div>
-                </a>
-              ))
-            )}
-          </div>
-        </div>
+      <div className="catalog-grid">
+        {visibleCategories.map((cat) =>
+          cat.items.map((item) => (
+            <a key={item.id} className="card" href={item.link}>
+              <img
+                className="card-image"
+                src={item.img}
+                alt={item.title}
+                loading="lazy"
+                width={400}
+                height={280}
+              />
+              <div className="card-body">
+                <h3 className="card-title">{item.title}</h3>
+                <p className="card-price">
+                  от <b>{item.price.toLocaleString('ru-RU')}&nbsp;₽</b> / смена
+                </p>
+                <ul className="card-specs">
+                  {cat.properties.slice(0, MAX_CARD_PROPS).map((prop) => (
+                    <li key={prop}>
+                      <span className="card-specs__label">{propertyLabels[prop]}</span>
+                      <span className="card-specs__value">{item.props[prop] ?? '—'}</span>
+                    </li>
+                  ))}
+                </ul>
+                <span className="card-more">Подробнее</span>
+              </div>
+            </a>
+          ))
+        )}
       </div>
     </div>
   );

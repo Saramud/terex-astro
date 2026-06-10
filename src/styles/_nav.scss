@@ -21,7 +21,7 @@
 
     &:hover,
     &.active {
-      color: $main-color;
+      color: $accent-text;
     }
 
     &:focus-visible {
@@ -29,6 +29,28 @@
       outline-offset: 2px;
       border-radius: 2px;
     }
+  }
+}
+
+// Mobile collapsed menu (inside .site-nav)
+@media (max-width: $bp-lg - 1) {
+  .site-nav .menu {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px 0;
+  }
+
+  .site-nav .menu__item > a,
+  .site-nav .sub_menu {
+    padding: 10px 8px;
+  }
+
+  .site-nav .sub_menu {
+    flex: 1;
+  }
+
+  .site-nav .dropdown-item {
+    padding: 10px 16px;
   }
 }
 
@@ -53,20 +75,37 @@
 // Technics dropdown
 .tech-dropdown {
   position: relative;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 
   .my_dropdown {
     display: none;
   }
 
-  &:hover .my_dropdown,
-  &:focus-within .my_dropdown {
-    display: block;
+  // Desktop: dropdown on hover/focus
+  @media (min-width: $bp-lg) {
+    &:hover .my_dropdown,
+    &:focus-within .my_dropdown {
+      display: block;
+    }
+  }
+
+  // Mobile: accordion, toggled by .dropdown-arrow
+  &.open {
+    .my_dropdown {
+      display: block;
+    }
+
+    .dropdown-arrow i {
+      transform: rotate(180deg);
+    }
   }
 }
 
 .sub_menu {
   display: block;
-  padding: 8px 16px;
+  padding: 8px 4px 8px 16px;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 14px;
@@ -77,25 +116,45 @@
 
   &:hover,
   &.active {
-    color: $main-color;
+    color: $accent-text;
   }
+}
+
+.dropdown-arrow {
+  padding: 8px 12px 8px 4px;
+  line-height: 1;
+  color: inherit;
 
   i {
-    margin-left: 4px;
-    transition: transform 0.2s;
     display: inline-block;
+    transition: transform 0.2s;
+  }
+
+  &:focus-visible {
+    outline: 3px solid $main-color;
+    outline-offset: 2px;
+    border-radius: 2px;
   }
 }
 
 .my_dropdown {
   background: $white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+  box-shadow: $shadow-dropdown;
+  border-radius: $radius-sm;
   min-width: 220px;
   z-index: 100;
   position: absolute;
   left: 0;
   top: 100%;
+
+  @media (max-width: $bp-lg - 1) {
+    position: static;
+    flex-basis: 100%;
+    box-shadow: none;
+    background-color: $gray-light;
+    border-radius: $radius-sm;
+    margin: 0 0 8px;
+  }
 }
 
 // Collapse component
@@ -124,12 +183,12 @@
 
   &:hover {
     background-color: $gray-light;
-    color: $main-color;
+    color: $accent-text;
   }
 
   &.dropdown_active {
     font-weight: 600;
-    color: $main-color;
+    color: $accent-text;
   }
 
   i {
@@ -149,36 +208,14 @@
   margin-bottom: 8px;
 }
 
-// Technics page nav selector
+// Technics page nav selector (uses .techs chips)
 .technic__selector {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   list-style: none;
-  margin: 16px 0;
+  margin: 8px 0 16px;
   padding: 0;
-}
-
-.technic_active a,
-.technic_passive a {
-  display: block;
-  padding: 6px 12px;
-  font-size: 13px;
-  border-radius: 4px;
-  transition: background-color 0.2s;
-}
-
-.technic_active {
-  background-color: $main-color;
-  border-radius: 4px;
-
-  a {
-    font-weight: 600;
-  }
-}
-
-.technic_passive:hover {
-  background-color: $gray-light;
 }
 
 // Technics filter menu
@@ -190,21 +227,26 @@
   list-style: none;
   padding: 16px 0;
   margin: 0;
+
+  li {
+    flex-shrink: 0;
+  }
 }
 
 .techs {
+  display: inline-block;
   padding: 8px 14px;
-  font-size: 13px;
+  font-size: $fs-md;
   font-weight: 600;
   cursor: pointer;
   border: 2px solid $gray-border;
-  border-radius: 4px;
+  border-radius: 20px;
+  background-color: $white;
   transition: all 0.2s;
-  text-transform: uppercase;
 
   &:hover {
     border-color: $main-color;
-    color: $main-color;
+    color: $accent-text;
   }
 
   &:focus-visible {
@@ -223,24 +265,26 @@
   }
 }
 
+// Mobile: filter chips scroll horizontally in one row
 @media (max-width: $bp-md - 1) {
   .technics__menu {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
     gap: 6px;
-    padding: 12px 0;
+    padding: 12px $gutter;
+    margin: 0 (-$gutter);
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   .techs {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 6px 12px;
+    font-size: $fs-sm;
+    white-space: nowrap;
   }
-
-  .my_dropdown {
-    min-width: 180px;
-  }
-}
-
-// Category page active nav item
-.allTechnics {
-  background-color: $main-color;
-  border-color: $main-color;
 }
