@@ -43,12 +43,19 @@
     font-size: 13px;
     font-weight: 400;
 
-    &:before {
-      font-size: 18px;
+    &::before {
+      width: 18px;
+      height: 18px;
     }
     &:hover {
       color: $main-color;
     }
+  }
+
+  // на тёмном фоне яркий жёлтый читается лучше тёмного
+  .icon-phone::before,
+  .icon-mail::before {
+    background-color: $main-color;
   }
 }
 

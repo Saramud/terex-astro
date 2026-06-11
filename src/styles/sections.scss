@@ -556,12 +556,11 @@
       color: $black;
       font-weight: 600;
       font-size: clamp(14px, 2vw, 20px);
+      gap: 14px;
 
-      &:before {
-        color: $main-color;
-        font-family: 'icomoon';
-        font-size: 26px;
-        padding-right: 15px;
+      &::before {
+        width: 26px;
+        height: 26px;
       }
     }
 
