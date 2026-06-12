@@ -19,7 +19,14 @@ export type TechPropertyKey =
   | 'weight'
   | 'boomLength'
   | 'minimumReach'
-  | 'maximumReach';
+  | 'maximumReach'
+  | 'workingHeight'
+  | 'basketCapacity'
+  | 'bladeWidth'
+  | 'bladeVolume'
+  | 'drumWidth'
+  | 'drillDiameter'
+  | 'drillDepth';
 
 export const propertyLabels: Record<TechPropertyKey, string> = {
   beadLength: 'Длина борта, м',
@@ -43,6 +50,13 @@ export const propertyLabels: Record<TechPropertyKey, string> = {
   boomLength: 'Длина стрелы, м',
   minimumReach: 'Грузоподъемность на минимальном вылете, т/м',
   maximumReach: 'Грузоподъемность на максимальном вылете, т/м',
+  workingHeight: 'Рабочая высота подъёма, м',
+  basketCapacity: 'Грузоподъемность люльки, кг',
+  bladeWidth: 'Ширина отвала, м',
+  bladeVolume: 'Объем отвала, м3',
+  drumWidth: 'Ширина вальца, м',
+  drillDiameter: 'Диаметр бурения, мм',
+  drillDepth: 'Глубина бурения, м',
 };
 
 export interface EquipmentItem {

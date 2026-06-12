@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { categories } from '../data/equipment';
+---
+
+<BaseLayout
+  title="Страница не найдена — Терекс-Плюс"
+  description="Страница не найдена. Перейдите в каталог спецтехники в аренду в Санкт-Петербурге: экскаваторы, автокраны, самосвалы, погрузчики, манипуляторы."
+  noindex={true}
+>
+  <Header />
+
+  <main>
+    <section class="technic">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 text-center">
+            <h1 class="technic__title">Страница не найдена</h1>
+            <p>
+              Такой страницы нет — возможно, ссылка устарела или в адресе опечатка. Зато техника на
+              месте: выберите категорию или <a href="/">вернитесь на главную</a>.
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col nav-menu">
+            <ul class="technic__selector">
+              {
+                categories.map((cat) => (
+                  <li>
+                    <a class="techs" href={`/technics/${cat.urlSlug}.html`}>
+                      {cat.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-12 text-center">
+            <p>
+              Нужна помощь с подбором? Звоните
+              <a href="tel:8(812)989-03-32">8&nbsp;(812)&nbsp;989-03-32</a> — работаем круглосуточно.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>

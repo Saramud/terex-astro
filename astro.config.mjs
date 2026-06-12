@@ -4,7 +4,13 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://terex-plus.ru',
-  integrations: [react(), sitemap()],
+  integrations: [
+    react(),
+    sitemap({
+      // lastmod = дата сборки: подсказывает поисковикам, что страницы стоит переобойти
+      serialize: (item) => ({ ...item, lastmod: new Date().toISOString() }),
+    }),
+  ],
   output: 'static',
   build: {
     format: 'file',

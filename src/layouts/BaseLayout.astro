@@ -9,6 +9,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   jsonLdExtra?: object[];
+  noindex?: boolean;
 }
 
 const BASE_URL = 'https://terex-plus.ru';
@@ -20,6 +21,7 @@ const {
   canonical,
   ogImage = `${BASE_URL}/img/og.png`,
   jsonLdExtra = [],
+  noindex = false,
 } = Astro.props;
 
 const localBusinessLD = {
@@ -71,7 +73,7 @@ const organizationLD = {
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <meta name="google-site-verification" content="gXVs0NLswo4D7iBsL9nx21Zy6MF5UmIT4_nihLKJw_Q" />
     <title>{title}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />

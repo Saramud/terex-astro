@@ -13,4 +13,8 @@ export const categoryImages: Record<string, string> = {
   'excavatory-gusenichnye': '/img/cat/excavatory-gusenichnye.svg',
   'excavatory-kolesnye': '/img/cat/excavatory-kolesnye.svg',
   'excavatory-pogruzchiki': '/img/cat/excavatory-pogruzchiki.svg',
+  avtovyshki: '/img/cat/avtovyshki.svg',
+  buldozery: '/img/cat/buldozery.svg',
+  katki: '/img/cat/katki.svg',
+  yamobury: '/img/cat/yamobury.svg',
 };

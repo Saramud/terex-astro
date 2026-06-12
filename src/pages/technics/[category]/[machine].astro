@@ -27,6 +27,7 @@ const priceFmt = item.price.toLocaleString('ru-RU');
 const pageTitle = `Аренда ${item.title} в СПб от ${priceFmt} ₽/смена — Терекс-Плюс`;
 const description = `Аренда ${item.title} в Санкт-Петербурге и Ленинградской области от ${priceFmt} ₽ за смену (8 часов) с оператором. Подача 24/7, официальный договор. ☎ 8 (812) 989-03-32`;
 const canonical = `https://terex-plus.ru/technics/${category.urlSlug}/${item.id}.html`;
+const ogImage = `https://terex-plus.ru/img/og/${category.urlSlug}/${item.id}.png`;
 
 const serviceLD = {
   '@context': 'https://schema.org',
@@ -47,7 +48,14 @@ const serviceLD = {
     '@type': 'Offer',
     price: item.price,
     priceCurrency: 'RUB',
+    priceValidUntil: `${new Date().getFullYear()}-12-31`,
     availability: 'https://schema.org/InStock',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      price: item.price,
+      priceCurrency: 'RUB',
+      unitText: 'смена (8 часов)',
+    },
     seller: { '@type': 'Organization', name: 'Терекс-Плюс' },
   },
 };
@@ -61,6 +69,7 @@ const siblings = category.items.filter((i) => i.id.startsWith(prefix));
   title={pageTitle}
   description={description}
   canonical={canonical}
+  ogImage={ogImage}
   jsonLdExtra={[serviceLD]}
 >
   <Header page="technicItem" showModal={false} />

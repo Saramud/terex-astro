@@ -141,6 +141,27 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"articles": {
+"arenda-frontalnogo-pogruzchika.md": {
+	id: "arenda-frontalnogo-pogruzchika.md";
+  slug: "arenda-frontalnogo-pogruzchika";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
+"arenda-mini-pogruzchika-zadachi.md": {
+	id: "arenda-mini-pogruzchika-zadachi.md";
+  slug: "arenda-mini-pogruzchika-zadachi";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
+"arenda-samosvala-vyvoz-grunta.md": {
+	id: "arenda-samosvala-vyvoz-grunta.md";
+  slug: "arenda-samosvala-vyvoz-grunta";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
 "arenda-spectehniki-s-operatorom.md": {
 	id: "arenda-spectehniki-s-operatorom.md";
   slug: "arenda-spectehniki-s-operatorom";
@@ -155,9 +176,30 @@ declare module 'astro:content' {
   collection: "articles";
   data: InferEntrySchema<"articles">
 } & { render(): Render[".md"] };
+"manipulator-ili-avtokran.md": {
+	id: "manipulator-ili-avtokran.md";
+  slug: "manipulator-ili-avtokran";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
 "skolko-stoit-arenda-avtokrana.md": {
 	id: "skolko-stoit-arenda-avtokrana.md";
   slug: "skolko-stoit-arenda-avtokrana";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
+"skolko-stoit-vyryt-kotlovan.md": {
+	id: "skolko-stoit-vyryt-kotlovan.md";
+  slug: "skolko-stoit-vyryt-kotlovan";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
+"teleskopicheskij-pogruzchik-vmesto-krana.md": {
+	id: "teleskopicheskij-pogruzchik-vmesto-krana.md";
+  slug: "teleskopicheskij-pogruzchik-vmesto-krana";
   body: string;
   collection: "articles";
   data: InferEntrySchema<"articles">
