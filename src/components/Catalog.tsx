@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import type { EquipmentCategory } from '../data/types';
+import type { EquipmentCategory, EquipmentItem } from '../data/types';
 import { propertyLabels } from '../data/types';
 import { categoryImages } from '../data/categoryImages';
 
@@ -33,6 +33,8 @@ export default function Catalog({
     return localStorage.getItem(storageKey) === 'allTechnics';
   });
 
+  const [query, setQuery] = useState('');
+
   useEffect(() => {
     if (!showFilters) return;
     if (showAll) {
@@ -43,6 +45,7 @@ export default function Catalog({
   }, [activeCategoryId, showAll, showFilters, storageKey]);
 
   function selectCategory(id: string) {
+    setQuery('');
     if (id === 'allTechnics') {
       setShowAll(true);
     } else {
@@ -54,8 +57,44 @@ export default function Catalog({
   const visibleCategories =
     showFilters && showAll ? categories : categories.filter((c) => c.id === activeCategoryId);
 
+  const normalizedQuery = query.trim().toLowerCase();
+  const isSearching = showFilters && normalizedQuery.length > 0;
+
+  // While searching, look across every category by machine name; otherwise
+  // respect the selected category / «Вся техника» filter.
+  const results: { cat: EquipmentCategory; item: EquipmentItem }[] = (
+    isSearching ? categories : visibleCategories
+  ).flatMap((cat) =>
+    cat.items
+      .filter((item) => !isSearching || item.title.toLowerCase().includes(normalizedQuery))
+      .map((item) => ({ cat, item }))
+  );
+
   return (
     <div>
+      {showFilters && (
+        <div className="technics__search">
+          <input
+            type="search"
+            className="technics__search-input"
+            placeholder="Поиск по технике…"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Поиск по технике"
+          />
+          {query && (
+            <button
+              type="button"
+              className="technics__search-clear"
+              aria-label="Очистить поиск"
+              onClick={() => setQuery('')}
+            >
+              ×
+            </button>
+          )}
+        </div>
+      )}
+
       {showFilters && (
         <ul className="technics__menu">
           <li>
@@ -83,9 +122,13 @@ export default function Catalog({
         </ul>
       )}
 
-      <div className="catalog-grid">
-        {visibleCategories.map((cat) =>
-          cat.items.map((item) => (
+      {isSearching && results.length === 0 ? (
+        <p className="technics__empty">
+          По запросу «{query.trim()}» ничего не найдено
+        </p>
+      ) : (
+        <div className="catalog-grid">
+          {results.map(({ cat, item }) => (
             <a key={item.id} className="card" href={item.link}>
               <img
                 className="card-image"
@@ -111,9 +154,9 @@ export default function Catalog({
                 <span className="card-more">Подробнее</span>
               </div>
             </a>
-          ))
-        )}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

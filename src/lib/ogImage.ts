@@ -78,7 +78,7 @@ export async function renderOgImage({
   <text x="80" y="148" font-family="Arial, sans-serif" font-size="26" fill="${MUTED}">Аренда спецтехники в Санкт-Петербурге и ЛО</text>
   ${titleSvg}
   <text x="80" y="478" font-family="Arial, sans-serif" font-size="44" font-weight="bold" fill="${ACCENT}">от ${priceFmt} ₽ <tspan font-size="32" font-weight="normal" fill="${MUTED}">/ ${escapeXml(priceLabel)}</tspan></text>
-  <text x="80" y="560" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#ffffff">8 (812) 989-03-32 <tspan font-size="30" font-weight="normal" fill="${MUTED}">· terex-plus.ru</tspan></text>
+  <text x="80" y="560" font-family="Arial, sans-serif" font-size="40" font-weight="bold" fill="#ffffff">8 (921) 573-45-02 <tspan font-size="30" font-weight="normal" fill="${MUTED}">· terex-plus.ru</tspan></text>
 </svg>`;
 
   return sharp(Buffer.from(svg)).png().toBuffer();
