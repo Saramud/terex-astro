@@ -28,7 +28,7 @@ This is a static Astro site (SSG) for Terex-Plus, a Russian construction equipme
 
 - `/` — Homepage with filterable equipment catalog, FAQ (FAQPage schema) and contact form
 - `/about`, `/contacts` — Static informational pages
-- `/technics/[category]` — Dynamic category listing pages (10 categories) with SEO text blocks
+- `/technics/[category]` — Dynamic category listing pages (14 categories) with SEO text blocks
 - `/technics/[category]/[machine]` — Dynamic individual equipment detail pages
 - `/articles` + `/articles/[slug]` — SEO articles from the `articles` content collection
 
@@ -36,7 +36,7 @@ All routes are generated statically at build time from `src/data/equipment.ts`.
 
 ### Data Layer
 
-`src/data/equipment.ts` is the single source of truth for all equipment data — ~80+ machines across 10 categories with prices and technical specs. `src/data/types.ts` defines `EquipmentItem`, `EquipmentCategory`, and all 21+ property types with their Russian display labels. When adding or modifying equipment, only these two files need to change; the dynamic routes automatically pick up the data via `getStaticPaths()`.
+`src/data/equipment.ts` is the single source of truth for all equipment data — ~60 machines across 14 categories with prices and technical specs. `src/data/types.ts` defines `EquipmentItem`, `EquipmentCategory`, and all 21+ property types with their Russian display labels. When adding or modifying equipment, only these two files need to change; the dynamic routes automatically pick up the data via `getStaticPaths()`.
 
 `src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links). Every category in `equipment.ts` must have a matching entry here. Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
 
@@ -44,8 +44,8 @@ All routes are generated statically at build time from `src/data/equipment.ts`.
 
 Astro components handle layout and static markup; React components handle interactivity:
 
-- **`Catalog.tsx`** (React) — Filterable equipment card grid on the homepage. Persists selected category to `localStorage`.
-- **`ContactForm.tsx`** (React) — Request form with IMask phone masking. Submits to `/telegram.php` (server-side script not in this repo).
+- **`Catalog.tsx`** (React) — Filterable equipment card grid (homepage + `/technics`). Category filter pills plus a live name search (search-first: a non-empty query searches across all categories by `item.title`; selecting a category clears it). Persists selected category to `localStorage`. Cards currently render the per-category illustration (`categoryImages[urlSlug]`), not per-machine `item.img`.
+- **`ContactForm.tsx`** (React) — Request form with IMask phone masking. Submits to `/mail.php` (server-side mail script, lives in `public/`).
 - **`BaseLayout.astro`** — Main layout: `<head>` with SEO tags (OG, JSON-LD LocalBusiness schema, canonical), View Transitions, modal initialization logic.
 - **`Header.astro`** — Navigation with dropdown menus built from equipment categories.
 - **`Strip.astro`** — Breadcrumb header strip used on category and detail pages.
