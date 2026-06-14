@@ -206,12 +206,14 @@
   font-size: 13px;
   color: $gray;
   margin-bottom: 8px;
+  text-align: center;
 }
 
 // Technics page nav selector (uses .techs chips)
 .technic__selector {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 8px;
   list-style: none;
   margin: 8px 0 16px;
