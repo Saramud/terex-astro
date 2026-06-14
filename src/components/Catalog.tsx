@@ -132,7 +132,7 @@ export default function Catalog({
             <a key={item.id} className="card" href={item.link}>
               <img
                 className="card-image"
-                src={categoryImages[cat.urlSlug] ?? item.img}
+                src={item.img || categoryImages[cat.urlSlug]}
                 alt={item.title}
                 loading="lazy"
                 width={400}

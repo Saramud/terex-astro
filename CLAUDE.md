@@ -38,13 +38,15 @@ All routes are generated statically at build time from `src/data/equipment.ts`.
 
 `src/data/equipment.ts` is the single source of truth for all equipment data — ~60 machines across 14 categories with prices and technical specs. `src/data/types.ts` defines `EquipmentItem`, `EquipmentCategory`, and all 21+ property types with their Russian display labels. When adding or modifying equipment, only these two files need to change; the dynamic routes automatically pick up the data via `getStaticPaths()`.
 
+Each item's `img` field holds its photo path. Per-machine photos live in `public/img/machines/` named `<item.id>.webp`; machines without a real photo set `img` to their category illustration (`/img/cat/<urlSlug>.svg`) instead. `src/data/categoryImages.ts` maps each category `urlSlug` to that fallback illustration.
+
 `src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links). Every category in `equipment.ts` must have a matching entry here. Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
 
 ### Components
 
 Astro components handle layout and static markup; React components handle interactivity:
 
-- **`Catalog.tsx`** (React) — Filterable equipment card grid (homepage + `/technics`). Category filter pills plus a live name search (search-first: a non-empty query searches across all categories by `item.title`; selecting a category clears it). Persists selected category to `localStorage`. Cards currently render the per-category illustration (`categoryImages[urlSlug]`), not per-machine `item.img`.
+- **`Catalog.tsx`** (React) — Filterable equipment card grid (homepage + `/technics`). Category filter pills plus a live name search (search-first: a non-empty query searches across all categories by `item.title`; selecting a category clears it). Persists selected category to `localStorage`. Cards render the per-machine photo (`item.img`), falling back to the per-category illustration (`categoryImages[urlSlug]`) when a machine has no photo.
 - **`ContactForm.tsx`** (React) — Request form with IMask phone masking. Submits to `/mail.php` (server-side mail script, lives in `public/`).
 - **`BaseLayout.astro`** — Main layout: `<head>` with SEO tags (OG, JSON-LD LocalBusiness schema, canonical), View Transitions, modal initialization logic.
 - **`Header.astro`** — Navigation with dropdown menus built from equipment categories.

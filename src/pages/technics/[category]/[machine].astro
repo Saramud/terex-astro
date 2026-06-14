@@ -21,7 +21,7 @@ export function getStaticPaths() {
 
 const { category, item } = Astro.props;
 const seo = categorySeo[category.urlSlug];
-const catImg = categoryImages[category.urlSlug];
+const catImg = item.img || categoryImages[category.urlSlug];
 const priceFmt = item.price.toLocaleString('ru-RU');
 
 const pageTitle = `Аренда ${item.title} в СПб от ${priceFmt} ₽/смена — Терекс-Плюс`;
