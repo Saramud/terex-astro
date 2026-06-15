@@ -277,18 +277,45 @@
     }
   }
 
-  &__img {
-    flex: 1 1 45%;
-    align-self: flex-end;
-    width: min(90%, 420px);
-    height: auto;
+  &__media {
+    position: relative;
+    align-self: center;
+    width: min(78%, 360px);
     margin: 0 auto;
 
     @media (min-width: $bp-md) {
-      width: 45%;
-      max-width: 520px;
+      flex: 1 1 45%;
+      align-self: flex-end;
+      width: auto;
+      max-width: 480px;
       margin: 0;
     }
+
+    // Фирменный «прожектор» за машиной: вытягивает тёмные контуры
+    // иллюстрации из тёмного фона и собирает блок в единый фокус.
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -6% -4% -2%;
+      background: radial-gradient(
+        ellipse 68% 56% at 50% 46%,
+        rgba($main-color, 0.24),
+        rgba($main-color, 0.07) 45%,
+        transparent 70%
+      );
+      z-index: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__img {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    // Тень по силуэту техники (а не прямоугольная) — машина «встаёт на грунт».
+    filter: drop-shadow(0 20px 24px rgba(0, 0, 0, 0.45));
   }
 
   &__trust {

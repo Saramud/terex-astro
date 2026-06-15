@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 290" role="img" aria-label="Экскаватор-погрузчик Terex в аренду">
+  <ellipse cx="200" cy="270" rx="178" ry="11" fill="#000" opacity="0.28"/>
+
+  <!-- rear wheel -->
+  <circle cx="284" cy="214" r="47" fill="#1a1a1a"/>
+  <circle cx="284" cy="214" r="42" fill="none" stroke="#000" stroke-width="4" stroke-dasharray="5 8" opacity="0.55"/>
+  <circle cx="284" cy="214" r="31" fill="#2d2d2d"/>
+  <circle cx="284" cy="214" r="14" fill="#6e6e6e"/>
+  <circle cx="284" cy="214" r="5" fill="#2d2d2d"/>
+  <g fill="#4a4a4a">
+    <circle cx="284" cy="200" r="2.6"/><circle cx="297" cy="209" r="2.6"/>
+    <circle cx="292" cy="225" r="2.6"/><circle cx="276" cy="225" r="2.6"/>
+    <circle cx="271" cy="209" r="2.6"/>
+  </g>
+
+  <!-- front wheel -->
+  <circle cx="108" cy="230" r="32" fill="#1a1a1a"/>
+  <circle cx="108" cy="230" r="27" fill="none" stroke="#000" stroke-width="3.5" stroke-dasharray="4 7" opacity="0.55"/>
+  <circle cx="108" cy="230" r="19" fill="#2d2d2d"/>
+  <circle cx="108" cy="230" r="9" fill="#6e6e6e"/>
+  <circle cx="108" cy="230" r="3" fill="#2d2d2d"/>
+
+  <!-- chassis -->
+  <rect x="104" y="194" width="186" height="22" rx="8" fill="#2d2d2d"/>
+
+  <!-- main body / engine hood + deck -->
+  <path d="M84 196 L84 168 Q84 150 102 150 L252 150 Q268 150 268 166 L268 196 Z" fill="#ffc61a"/>
+  <path d="M84 168 Q84 150 102 150 L252 150 Q268 150 268 166 L268 158 Q268 142 252 142 L102 142 Q84 142 84 160 Z" fill="#ffd866"/>
+  <rect x="84" y="190" width="184" height="6" fill="#e6b000"/>
+
+  <!-- engine hood front details -->
+  <g stroke="#1a1a1a" stroke-width="2.5" opacity="0.4" stroke-linecap="round">
+    <line x1="90" y1="160" x2="90" y2="186"/>
+    <line x1="96" y1="160" x2="96" y2="186"/>
+  </g>
+  <circle cx="89" cy="174" r="5" fill="#ffe082" stroke="#1a1a1a" stroke-width="2"/>
+
+  <!-- TEREX badge -->
+  <text x="190" y="186" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="15" letter-spacing="0.5" fill="#1a1a1a">TEREX</text>
+
+  <!-- cab -->
+  <rect x="176" y="100" width="86" height="13" rx="4" fill="#2d2d2d"/>
+  <rect x="183" y="110" width="8" height="42" fill="#e6b000"/>
+  <rect x="247" y="110" width="9" height="42" fill="#e6b000"/>
+  <path d="M194 112 L244 112 L244 150 L194 150 Z" fill="#3c4a54"/>
+  <path d="M194 112 L244 112 L210 150 L194 150 Z" fill="#4d5d68" opacity="0.7"/>
+  <line x1="219" y1="112" x2="219" y2="150" stroke="#2d2d2d" stroke-width="2.5"/>
+  <line x1="176" y1="118" x2="170" y2="124" stroke="#2d2d2d" stroke-width="3.5" stroke-linecap="round"/>
+
+  <!-- front loader -->
+  <line x1="148" y1="180" x2="112" y2="186" stroke="#6e6e6e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M170 162 L74 196" stroke="#1a1a1a" stroke-width="16" stroke-linecap="round"/>
+  <path d="M170 162 L74 196" stroke="#ffc61a" stroke-width="9" stroke-linecap="round"/>
+  <path d="M80 186 L104 186 L104 230 Q104 240 94 240 L64 240 Q52 240 57 228 L72 190 Z" fill="#ffc61a" stroke="#1a1a1a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M80 186 L104 186 L104 198 L74 198 Z" fill="#ffd866"/>
+  <g fill="#2d2d2d">
+    <path d="M66 240 l7 0 -3 7 z"/>
+    <path d="M78 240 l7 0 -3 7 z"/>
+    <path d="M90 240 l7 0 -3 7 z"/>
+  </g>
+  <circle cx="170" cy="162" r="6" fill="#1a1a1a"/>
+  <circle cx="170" cy="162" r="2.5" fill="#6e6e6e"/>
+
+  <!-- backhoe -->
+  <rect x="258" y="118" width="15" height="40" rx="5" fill="#2d2d2d"/>
+  <line x1="264" y1="146" x2="306" y2="132" stroke="#6e6e6e" stroke-width="6" stroke-linecap="round"/>
+  <path d="M266 152 L332 118" stroke="#1a1a1a" stroke-width="20" stroke-linecap="round"/>
+  <path d="M266 152 L332 118" stroke="#ffc61a" stroke-width="12" stroke-linecap="round"/>
+  <line x1="320" y1="106" x2="350" y2="150" stroke="#6e6e6e" stroke-width="5" stroke-linecap="round"/>
+  <path d="M332 118 L358 180" stroke="#1a1a1a" stroke-width="15" stroke-linecap="round"/>
+  <path d="M332 118 L358 180" stroke="#ffc61a" stroke-width="8" stroke-linecap="round"/>
+  <path d="M350 174 q14 2 18 14 q3 11 -7 17 l-18 -9 z" fill="#2d2d2d" stroke="#1a1a1a" stroke-width="2"/>
+  <g fill="#1a1a1a">
+    <path d="M343 196 l5 4 -4 5 -5 -4 z"/>
+    <path d="M352 201 l5 4 -4 5 -5 -4 z"/>
+  </g>
+  <circle cx="266" cy="152" r="7" fill="#1a1a1a"/><circle cx="266" cy="152" r="3" fill="#6e6e6e"/>
+  <circle cx="332" cy="118" r="7" fill="#1a1a1a"/><circle cx="332" cy="118" r="3" fill="#6e6e6e"/>
+  <circle cx="358" cy="180" r="6" fill="#1a1a1a"/><circle cx="358" cy="180" r="2.5" fill="#6e6e6e"/>
+</svg>
