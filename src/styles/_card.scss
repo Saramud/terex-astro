@@ -42,7 +42,10 @@ a.card {
 .card-image {
   width: 100%;
   aspect-ratio: 4/3;
-  object-fit: cover;
+  object-fit: contain;
+  background: $gray-light;
+  border-bottom: 1px solid $gray-border;
+  padding: $sp-1;
   display: block;
 }
 
