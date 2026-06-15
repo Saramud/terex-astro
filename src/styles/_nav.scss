@@ -353,21 +353,11 @@
   }
 }
 
-// Mobile: filter chips scroll horizontally in one row
+// Mobile: filter chips wrap into rows and adapt to the viewport width
 @media (max-width: $bp-md - 1) {
   .technics__menu {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
     gap: 6px;
-    padding: 12px $gutter;
-    margin: 0 (-$gutter);
-    scrollbar-width: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+    padding: 12px 0;
   }
 
   .techs {
