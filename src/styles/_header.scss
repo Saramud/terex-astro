@@ -225,25 +225,17 @@
     flex-direction: column;
     align-items: center;
     gap: $sp-2;
-    padding: $sp-4 0 0;
+    padding: $sp-4 0;
 
     @media (min-width: $bp-md) {
-      flex-direction: row;
-      align-items: center;
       gap: $sp-3;
       padding: $sp-5 0;
     }
   }
 
   &__content {
-    flex: 1 1 55%;
     text-align: center;
-    padding-bottom: $sp-3;
-
-    @media (min-width: $bp-md) {
-      text-align: left;
-      padding-bottom: 0;
-    }
+    max-width: 760px;
 
     h1 {
       font-size: $fs-h1;
@@ -260,10 +252,6 @@
     color: rgba(255, 255, 255, 0.75);
     max-width: 52ch;
     margin: 0 auto $sp-3;
-
-    @media (min-width: $bp-md) {
-      margin-left: 0;
-    }
   }
 
   &__actions {
@@ -271,24 +259,15 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 12px;
-
-    @media (min-width: $bp-md) {
-      justify-content: flex-start;
-    }
   }
 
   &__media {
     position: relative;
-    align-self: center;
-    width: min(78%, 360px);
+    width: min(72%, 240px);
     margin: 0 auto;
 
     @media (min-width: $bp-md) {
-      flex: 1 1 45%;
-      align-self: center;
-      width: auto;
-      max-width: 480px;
-      margin: 0;
+      width: 240px;
     }
 
     // Фирменный «прожектор» за машиной: вытягивает тёмные контуры
