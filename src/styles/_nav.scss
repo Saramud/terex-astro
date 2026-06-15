@@ -33,7 +33,7 @@
 }
 
 // Mobile collapsed menu (inside .site-nav)
-@media (max-width: $bp-lg - 1) {
+@media (max-width: $bp-nav - 1) {
   .site-nav .menu {
     flex-direction: column;
     align-items: stretch;
@@ -84,7 +84,7 @@
   }
 
   // Desktop: dropdown on hover/focus
-  @media (min-width: $bp-lg) {
+  @media (min-width: $bp-nav) {
     &:hover .my_dropdown,
     &:focus-within .my_dropdown {
       display: block;
@@ -147,7 +147,7 @@
   left: 0;
   top: 100%;
 
-  @media (max-width: $bp-lg - 1) {
+  @media (max-width: $bp-nav - 1) {
     position: static;
     flex-basis: 100%;
     box-shadow: none;
