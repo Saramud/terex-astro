@@ -922,7 +922,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'avtshTELESKOP45',
         title: 'Автовышка телескопическая 45 м (КАМАЗ)',
-        img: '/img/cat/avtovyshki.svg',
+        img: '/img/machines/avtshTELESKOP45.webp',
         link: '/technics/avtovyshki/avtshTELESKOP45.html',
         price: 28000,
         props: {
@@ -943,7 +943,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'buldB10M',
         title: 'Бульдозер ЧТЗ Б10М',
-        img: '/img/cat/buldozery.svg',
+        img: '/img/machines/buldB10M.webp',
         link: '/technics/buldozery/buldB10M.html',
         price: 20000,
         props: {
@@ -956,7 +956,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'buldShantuiSD16',
         title: 'Бульдозер Shantui SD16',
-        img: '/img/cat/buldozery.svg',
+        img: '/img/machines/buldShantuiSD16.webp',
         link: '/technics/buldozery/buldShantuiSD16.html',
         price: 22000,
         props: {
@@ -969,7 +969,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'buldKomatsuD65',
         title: 'Бульдозер Komatsu D65',
-        img: '/img/cat/buldozery.svg',
+        img: '/img/machines/buldKomatsuD65.webp',
         link: '/technics/buldozery/buldKomatsuD65.html',
         price: 26000,
         props: {
@@ -990,7 +990,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'katokHAMM3411',
         title: 'Каток грунтовый HAMM 3411',
-        img: '/img/cat/katki.svg',
+        img: '/img/machines/katokHAMM3411.webp',
         link: '/technics/katki/katokHAMM3411.html',
         price: 18000,
         props: {
@@ -1002,7 +1002,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'katokHAMMHD90',
         title: 'Каток асфальтовый HAMM HD 90',
-        img: '/img/cat/katki.svg',
+        img: '/img/machines/katokHAMMHD90.webp',
         link: '/technics/katki/katokHAMMHD90.html',
         price: 16000,
         props: {
@@ -1014,7 +1014,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'katokBOMAGBW138',
         title: 'Каток тандемный BOMAG BW 138 AD',
-        img: '/img/cat/katki.svg',
+        img: '/img/machines/katokBOMAGBW138.webp',
         link: '/technics/katki/katokBOMAGBW138.html',
         price: 13000,
         props: {
@@ -1034,7 +1034,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'yamoburBKM317',
         title: 'Ямобур БКМ-317 (ГАЗ, вездеход)',
-        img: '/img/cat/yamobury.svg',
+        img: '/img/machines/yamoburBKM317.webp',
         link: '/technics/yamobury/yamoburBKM317.html',
         price: 15000,
         props: {
@@ -1046,7 +1046,7 @@ export const categories: EquipmentCategory[] = [
       {
         id: 'yamoburBKM515',
         title: 'Ямобур БКМ-515 (КАМАЗ, вездеход)',
-        img: '/img/cat/yamobury.svg',
+        img: '/img/machines/yamoburBKM515.webp',
         link: '/technics/yamobury/yamoburBKM515.html',
         price: 18000,
         props: {
