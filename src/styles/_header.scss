@@ -229,9 +229,9 @@
 
     @media (min-width: $bp-md) {
       flex-direction: row;
-      align-items: flex-end;
+      align-items: center;
       gap: $sp-3;
-      padding: $sp-5 0 0;
+      padding: $sp-5 0;
     }
   }
 
@@ -242,7 +242,7 @@
 
     @media (min-width: $bp-md) {
       text-align: left;
-      padding-bottom: $sp-5;
+      padding-bottom: 0;
     }
 
     h1 {
@@ -285,7 +285,7 @@
 
     @media (min-width: $bp-md) {
       flex: 1 1 45%;
-      align-self: flex-end;
+      align-self: center;
       width: auto;
       max-width: 480px;
       margin: 0;
@@ -298,9 +298,9 @@
       position: absolute;
       inset: -6% -4% -2%;
       background: radial-gradient(
-        ellipse 68% 56% at 50% 46%,
-        rgba($main-color, 0.24),
-        rgba($main-color, 0.07) 45%,
+        ellipse 66% 54% at 50% 46%,
+        rgba($main-color, 0.16),
+        rgba($main-color, 0.05) 45%,
         transparent 70%
       );
       z-index: 0;
