@@ -169,6 +169,13 @@ declare module 'astro:content' {
   collection: "articles";
   data: InferEntrySchema<"articles">
 } & { render(): Render[".md"] };
+"arenda-yamobura.md": {
+	id: "arenda-yamobura.md";
+  slug: "arenda-yamobura";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
 "kak-vybrat-ekskavator.md": {
 	id: "kak-vybrat-ekskavator.md";
   slug: "kak-vybrat-ekskavator";
