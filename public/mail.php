@@ -10,11 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-$name     = trim($_POST['user_name']     ?? '');
-$phone    = trim($_POST['user_phone']    ?? '');
-$technics = trim($_POST['user_technics'] ?? '');
-$rent     = trim($_POST['user_rent']     ?? '');
-$mail     = trim($_POST['user_mail']     ?? '');
+// PHP 5.6 на хостинге — без оператора ?? (он только с PHP 7.0).
+$name     = isset($_POST['user_name'])     ? trim($_POST['user_name'])     : '';
+$phone    = isset($_POST['user_phone'])    ? trim($_POST['user_phone'])    : '';
+$technics = isset($_POST['user_technics']) ? trim($_POST['user_technics']) : '';
+$rent     = isset($_POST['user_rent'])     ? trim($_POST['user_rent'])     : '';
+$mail     = isset($_POST['user_mail'])     ? trim($_POST['user_mail'])     : '';
 
 if (empty($phone)) {
     http_response_code(400);
