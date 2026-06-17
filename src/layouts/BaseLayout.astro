@@ -109,13 +109,24 @@ const organizationLD = {
     </div>
 
     <script>
+      // Lock/unlock page scroll for modals. Compensates for the scrollbar width
+      // so desktop content doesn't shift sideways when the scrollbar disappears.
+      function lockScroll() {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        if (scrollbarWidth > 0) document.body.style.paddingRight = `${scrollbarWidth}px`;
+        document.body.style.overflow = 'hidden';
+      }
+      function unlockScroll() {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+      }
+
       // Close modals with Escape (bound once — survives View Transitions)
       document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-          document.querySelectorAll<HTMLElement>('.modal.show').forEach((m) => {
-            m.classList.remove('show');
-            document.body.style.overflow = '';
-          });
+          const open = document.querySelectorAll<HTMLElement>('.modal.show');
+          open.forEach((m) => m.classList.remove('show'));
+          if (open.length) unlockScroll();
         }
       });
 
@@ -129,7 +140,7 @@ const organizationLD = {
             const modal = document.querySelector<HTMLElement>(sel);
             if (modal) {
               modal.classList.add('show');
-              document.body.style.overflow = 'hidden';
+              lockScroll();
             } else {
               // No modal on this page — scroll to the inline form instead
               const form = document.querySelector<HTMLElement>('#requestform');
@@ -156,7 +167,7 @@ const organizationLD = {
             const modal = btn.closest<HTMLElement>('.modal');
             if (modal) {
               modal.classList.remove('show');
-              document.body.style.overflow = '';
+              unlockScroll();
             }
           });
         });
@@ -165,7 +176,7 @@ const organizationLD = {
           modal.addEventListener('click', (e) => {
             if (e.target === modal) {
               modal.classList.remove('show');
-              document.body.style.overflow = '';
+              unlockScroll();
             }
           });
         });
