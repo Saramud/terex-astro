@@ -148,6 +148,18 @@ export default function ContactForm({
                 placeholder="Количество смен (1 смена = 8 часов)"
               />
             </div>
+            <div className="col-sm-12 user user__comment">
+              <label htmlFor="comment" className="form-label">
+                Комментарий
+              </label>
+              <textarea
+                id="comment"
+                className="form-control"
+                name="user_comment"
+                placeholder="Опишите задачу или пожелание"
+                rows={4}
+              />
+            </div>
           </>
         ) : (
           <>
