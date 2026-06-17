@@ -30,6 +30,7 @@ This is a static Astro site (SSG) for Terex-Plus, a Russian construction equipme
 - `/about`, `/contacts` — Static informational pages
 - `/technics/[category]` — Dynamic category listing pages (14 categories) with SEO text blocks
 - `/technics/[category]/[machine]` — Dynamic individual equipment detail pages
+- `/arenda/[category]/[city]` — Geo landing pages ("аренда [техника] в [городе]"). Generated only for the categories in `PILOT_CATEGORY_SLUGS` (in `src/data/geoCities.ts`) × every city in `geoCities`. Separate route tree from `/technics` to avoid the `[machine]`/`[city]` dynamic-segment collision. Pilot category pages link to their geo pages via a "по районам" block.
 - `/articles` + `/articles/[slug]` — SEO articles from the `articles` content collection
 
 All routes are generated statically at build time from `src/data/equipment.ts`.
@@ -41,6 +42,8 @@ All routes are generated statically at build time from `src/data/equipment.ts`.
 Each item's `img` field holds its photo path. Per-machine photos live in `public/img/machines/` named `<item.id>.webp`; machines without a real photo set `img` to their category illustration (`/img/cat/<urlSlug>.svg`) instead. `src/data/categoryImages.ts` maps each category `urlSlug` to that fallback illustration.
 
 `src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links). Every category in `equipment.ts` must have a matching entry here. Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
+
+`src/data/geoCities.ts` drives the `/arenda/[category]/[city]` geo landing pages: each `GeoCity` has a `slug`, `name`, prepositional-case form, and a hand-written unique `intro` (real district facts — neighbours, demand profile — to avoid thin/doorway content). `PILOT_CATEGORY_SLUGS` limits which categories get geo pages.
 
 ### Components
 

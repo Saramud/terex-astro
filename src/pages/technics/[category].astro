@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import Catalog from '../../components/Catalog';
 import { categories } from '../../data/equipment';
 import { categorySeo } from '../../data/seoTexts';
+import { geoCities, PILOT_CATEGORY_SLUGS } from '../../data/geoCities';
 
 export function getStaticPaths() {
   return categories.map((cat) => ({
@@ -24,6 +25,7 @@ const minPriceFmt = minPrice.toLocaleString('ru-RU');
 const title = `Аренда ${seo.genitive} в СПб от ${minPriceFmt} ₽/смена — Терекс-Плюс`;
 const description = `Аренда ${seo.genitive} в Санкт-Петербурге и Ленинградской области от ${minPriceFmt} ₽ за смену (8 часов). В парке ${category.items.length} ед. техники, оператор включён в стоимость, подача 24/7. ☎ 8 (921) 573-45-02`;
 const canonical = `${BASE_URL}/technics/${category.urlSlug}.html`;
+const hasGeoPages = PILOT_CATEGORY_SLUGS.includes(category.urlSlug);
 const ogImage = `${BASE_URL}/img/og/${category.urlSlug}.png`;
 
 const itemListLD = {
@@ -85,6 +87,20 @@ const itemListLD = {
               ))
             }.
           </p>
+          {
+            hasGeoPages && (
+              <p class="seo-text__related">
+                Аренда {seo.genitive} по районам:{' '}
+                {geoCities.map((c, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    <a href={`/arenda/${category.urlSlug}/${c.slug}.html`}>{c.name}</a>
+                  </>
+                ))}
+                .
+              </p>
+            )
+          }
         </div>
       </div>
     </section>

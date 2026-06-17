@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Strip from '../../../components/Strip.astro';
+import Footer from '../../../components/Footer.astro';
+import Catalog from '../../../components/Catalog';
+import { categories } from '../../../data/equipment';
+import { categorySeo } from '../../../data/seoTexts';
+import { geoCities, PILOT_CATEGORY_SLUGS } from '../../../data/geoCities';
+
+export function getStaticPaths() {
+  return categories
+    .filter((cat) => PILOT_CATEGORY_SLUGS.includes(cat.urlSlug))
+    .flatMap((cat) =>
+      geoCities.map((city) => ({
+        params: { category: cat.urlSlug, city: city.slug },
+        props: { category: cat, city },
+      }))
+    );
+}
+
+const { category, city } = Astro.props;
+const seo = categorySeo[category.urlSlug];
+
+const BASE_URL = 'https://terex-plus.ru';
+const minPrice = Math.min(...category.items.map((i) => i.price));
+const minPriceFmt = minPrice.toLocaleString('ru-RU');
+
+const title = `Аренда ${seo.genitive} ${city.prepositional} от ${minPriceFmt} ₽/смена — Терекс-Плюс`;
+const description = `Аренда ${seo.genitive} ${city.prepositional} и районе от ${minPriceFmt} ₽ за смену (8 часов) с оператором. ${category.items.length} ед. техники в парке, подача 24/7, официальный договор. ☎ 8 (921) 573-45-02`;
+const canonical = `${BASE_URL}/arenda/${category.urlSlug}/${city.slug}.html`;
+const ogImage = `${BASE_URL}/img/og/${category.urlSlug}.png`;
+
+const serviceLD = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: `Аренда ${seo.genitive} ${city.prepositional}`,
+  description,
+  serviceType: `Аренда ${seo.genitive}`,
+  provider: {
+    '@type': 'Organization',
+    name: 'Терекс-Плюс',
+    url: BASE_URL,
+  },
+  areaServed: { '@type': 'City', name: city.name },
+  offers: {
+    '@type': 'AggregateOffer',
+    lowPrice: minPrice,
+    priceCurrency: 'RUB',
+    offerCount: category.items.length,
+    availability: 'https://schema.org/InStock',
+  },
+};
+---
+
+<BaseLayout
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+  jsonLdExtra={[serviceLD]}
+>
+  <Header page="technics" />
+  <Strip
+    categoryName={category.name}
+    categoryUrl={`/technics/${category.urlSlug}.html`}
+    itemName={city.name}
+  />
+
+  <main>
+    <section class="technics">
+      <div class="container">
+        <div class="row text-center">
+          <div class="col-sm">
+            <h1 class="technics__title">
+              Аренда {seo.genitive} {city.prepositional}
+            </h1>
+            <p class="technics__subtitle">
+              {category.items.length} ед. техники в собственном парке — от {minPriceFmt} ₽ за смену
+            </p>
+          </div>
+        </div>
+        <Catalog client:load categories={[category]} showFilters={false} />
+      </div>
+    </section>
+
+    <section class="seo-text">
+      <div class="container">
+        <div class="seo-text__inner">
+          {city.intro.map((p) => <p>{p}</p>)}
+          <h2>Какие работы выполняем {city.prepositional}</h2>
+          <ul>
+            {seo.tasks.map((t) => <li>{t}</li>)}
+          </ul>
+          <p class="seo-text__related">
+            Смотрите полный каталог <a href={`/technics/${category.urlSlug}.html`}>
+              {seo.genitive} в аренду
+            </a>. Также сдаём {
+              seo.related.map((r, i) => (
+                <>
+                  {i > 0 && ', '}
+                  <a href={r.href}>{r.label}</a>
+                </>
+              ))
+            } {city.prepositional} и по всей Ленинградской области.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer showModal={true} />
+</BaseLayout>
