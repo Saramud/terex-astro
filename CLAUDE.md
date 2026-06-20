@@ -41,6 +41,8 @@ All routes are generated statically at build time from `src/data/equipment.ts`.
 
 Each item's `img` field holds its photo path. Per-machine photos live in `public/img/machines/` named `<item.id>.webp`; machines without a real photo set `img` to their category illustration (`/img/cat/<urlSlug>.svg`) instead. `src/data/categoryImages.ts` maps each category `urlSlug` to that fallback illustration.
 
+> **Image cache-busting:** `public/.htaccess` caches all static assets (images, video, favicons, `/_astro/*`) for 1 year (`Cache-Control: max-age=31536000`). Images are not fingerprinted, so when replacing a photo or logo do **not** overwrite the old file with the same name — returning visitors keep the stale cached version for up to a year. Rename the file (and its reference) or purge the host cache instead.
+
 `src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links). Every category in `equipment.ts` must have a matching entry here. Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
 
 `src/data/geoCities.ts` drives the `/arenda/[category]/[city]` geo landing pages: each `GeoCity` has a `slug`, `name`, prepositional-case form, and a hand-written unique `intro` (real district facts — neighbours, demand profile — to avoid thin/doorway content). `PILOT_CATEGORY_SLUGS` limits which categories get geo pages.

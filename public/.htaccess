@@ -1,0 +1,47 @@
+# ----------------------------------------------------------------------
+# Кеширование статики (Cache-Control) — закрывает рекомендацию PageSpeed
+# "Эффективный период хранения кеша". Работает на Apache.
+# ----------------------------------------------------------------------
+
+<IfModule mod_headers.c>
+  # Хешированные ассеты Astro (/_astro/...) — имя меняется при изменении,
+  # поэтому можно кешировать максимально агрессивно.
+  <FilesMatch "\.(js|css|woff2?|ttf|otf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  # Изображения и видео — редко меняются, кешируем на год.
+  <FilesMatch "\.(webp|avif|png|jpe?g|gif|svg|ico|mp4|webm)$">
+    Header set Cache-Control "public, max-age=31536000"
+  </FilesMatch>
+
+  # HTML — всегда свежий (без кеша браузера).
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+# Резервный механизм через mod_expires, если mod_headers недоступен.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Сжатие текстовых ресурсов (gzip) — попутно ускоряет загрузку.
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE image/svg+xml application/xml
+</IfModule>
