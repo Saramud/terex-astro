@@ -62,6 +62,8 @@ Astro components handle layout and static markup; React components handle intera
 
 Custom SCSS with no CSS framework. Main entry is `src/styles/main.scss` which imports partials from the same directory (`_variables.scss`, `_grid.scss`, `_buttons.scss`, etc.). The grid uses Bootstrap-style class naming (`container`, `row`, `col-sm-*`, `col-lg-*`). Vite is configured to use the modern SCSS compiler API.
 
+`build.inlineStylesheets: 'always'` (in `astro.config.mjs`) inlines the page CSS bundle into a `<style>` tag in the HTML instead of an external `<link>`, eliminating the render-blocking stylesheet request (better LCP/FCP for search traffic). The trade-off — CSS isn't cached separately and ships with every page — is acceptable here because gzip (via `public/.htaccess`) shrinks the ~33 KB bundle to ~7 KB.
+
 ### Integrations
 
 - `@astrojs/react` — React for interactive UI components

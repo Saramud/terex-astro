@@ -14,6 +14,10 @@ export default defineConfig({
   output: 'static',
   build: {
     format: 'file',
+    // Встраивать CSS прямо в HTML (<style>), а не отдельным <link>.
+    // Убирает render-blocking запрос к /_astro/*.css — выигрыш по LCP/FCP,
+    // что важно для SEO-страниц с трафиком из поиска (первый визит).
+    inlineStylesheets: 'always',
   },
   trailingSlash: 'never',
   vite: {
