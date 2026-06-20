@@ -49,7 +49,7 @@ Each item's `img` field holds its photo path. Per-machine photos live in `public
 
 ### Components
 
-Astro components handle layout and static markup; React components handle interactivity:
+Astro components handle layout and static markup; React components handle interactivity. React islands hydrate lazily to keep the ~132 KB React runtime off the initial critical path: `Catalog` and in-page `ContactForm` use `client:visible` (their markup is server-rendered, so content/SEO is intact — only interactivity is deferred); the hidden modal `ContactForm` uses `client:idle` so it's ready before the user opens the modal. Avoid `client:load` unless a component must be interactive on first paint.
 
 - **`Catalog.tsx`** (React) — Filterable equipment card grid (homepage + `/technics`). Category filter pills plus a live name search (search-first: a non-empty query searches across all categories by `item.title`; selecting a category clears it). Persists selected category to `localStorage`. Cards render the per-machine photo (`item.img`), falling back to the per-category illustration (`categoryImages[urlSlug]`) when a machine has no photo.
 - **`ContactForm.tsx`** (React) — Request form with IMask phone masking. Submits to `/mail.php` (server-side mail script, lives in `public/`).

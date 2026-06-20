@@ -107,7 +107,7 @@ const faqLD = {
             <h2 class="technics__title" id="mainPageCatalog">Каталог спецтехники</h2>
           </div>
         </div>
-        <Catalog client:load categories={categories} showFilters={true} />
+        <Catalog client:visible categories={categories} showFilters={true} />
       </div>
     </section>
 
@@ -293,7 +293,7 @@ const faqLD = {
     <section class="request" id="requestform-section">
       <div class="container">
         <div class="row">
-          <ContactForm client:load title="Отправить заявку на аренду/подбор техники" />
+          <ContactForm client:visible title="Отправить заявку на аренду/подбор техники" />
         </div>
       </div>
     </section>
