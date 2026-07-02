@@ -250,6 +250,44 @@
   }
 }
 
+// ---- Category specs comparison table ----
+.specs-compare {
+  padding: $sp-4 0;
+  background-color: $gray-light;
+
+  h2 {
+    font-size: $fs-lg;
+    font-weight: 700;
+    margin-bottom: $sp-3;
+    text-align: center;
+  }
+
+  .table {
+    background-color: $white;
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    td:first-child a {
+      color: $accent-text;
+      text-decoration: underline;
+      font-weight: 600;
+
+      &:hover {
+        color: $black;
+      }
+    }
+
+    td:last-child {
+      white-space: nowrap;
+      font-weight: 600;
+    }
+  }
+}
+
 // ---- Technic detail page ----
 .technic {
   padding: $sp-3 0 $sp-5;

@@ -28,7 +28,7 @@ This is a static Astro site (SSG) for Terex-Plus, a Russian construction equipme
 
 - `/` — Homepage with filterable equipment catalog, FAQ (FAQPage schema) and contact form
 - `/about`, `/contacts` — Static informational pages
-- `/technics/[category]` — Dynamic category listing pages (14 categories) with SEO text blocks
+- `/technics/[category]` — Dynamic category listing pages (14 categories): catalog grid, an auto-generated specs/price comparison table (links to each machine page), SEO text block, a per-category FAQ (FAQPage schema) and a "Полезные статьи" cross-link block
 - `/technics/[category]/[machine]` — Dynamic individual equipment detail pages
 - `/arenda/[category]/[city]` — Geo landing pages ("аренда [техника] в [городе]"). Generated only for the categories in `PILOT_CATEGORY_SLUGS` (in `src/data/geoCities.ts`) × every city in `geoCities`. Separate route tree from `/technics` to avoid the `[machine]`/`[city]` dynamic-segment collision. Pilot category pages link to their geo pages via a "по районам" block.
 - `/articles` + `/articles/[slug]` — SEO articles from the `articles` content collection
@@ -43,7 +43,7 @@ Each item's `img` field holds its photo path. Per-machine photos live in `public
 
 > **Image cache-busting:** `public/.htaccess` caches all static assets (images, video, favicons, `/_astro/*`) for 1 year (`Cache-Control: max-age=31536000`). Images are not fingerprinted, so when replacing a photo or logo do **not** overwrite the old file with the same name — returning visitors keep the stale cached version for up to a year. Rename the file (and its reference) or purge the host cache instead.
 
-`src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links). Every category in `equipment.ts` must have a matching entry here. Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
+`src/data/seoTexts.ts` holds per-category SEO copy keyed by `urlSlug` (genitive case name for titles, intro paragraphs, task lists, related links, a required `faq` array of unique Q&A, and an optional `articles` array of blog cross-links). Every category in `equipment.ts` must have a matching entry here — including a unique `faq` (rendered with FAQPage schema; keep answers category-specific to avoid the Yandex "малоценная/маловостребованная страница" exclusion). Articles live in `src/content/articles/*.md` (schema in `src/content/config.ts`).
 
 `src/data/geoCities.ts` drives the `/arenda/[category]/[city]` geo landing pages: each `GeoCity` has a `slug`, `name`, prepositional-case form, and a hand-written unique `intro` (real district facts — neighbours, demand profile — to avoid thin/doorway content). `PILOT_CATEGORY_SLUGS` limits which categories get geo pages.
 
@@ -67,5 +67,5 @@ Custom SCSS with no CSS framework. Main entry is `src/styles/main.scss` which im
 ### Integrations
 
 - `@astrojs/react` — React for interactive UI components
-- `@astrojs/sitemap` — Auto-generates `sitemap-index.xml` at build time. Pinned to exactly 3.2.1: versions 3.3+ require Astro 5 and crash the build on Astro 4.
+- `@astrojs/sitemap` — Auto-generates `sitemap-index.xml` at build time. Pinned to exactly 3.2.1: versions 3.3+ require Astro 5 and crash the build on Astro 4. A `serialize` hook rewrites every URL to its canonical `.html` form (homepage → `/`); without it the integration emits extensionless URLs that don't match the `.html` pages/canonicals produced by `build.format: 'file'`, and Yandex won't index the sitemap targets.
 - `imask` — Phone number input masking in the contact form

@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import Catalog from '../../components/Catalog';
 import { categories } from '../../data/equipment';
 import { categorySeo } from '../../data/seoTexts';
+import { propertyLabels } from '../../data/types';
 import { geoCities, PILOT_CATEGORY_SLUGS } from '../../data/geoCities';
 
 export function getStaticPaths() {
@@ -40,6 +41,21 @@ const itemListLD = {
     url: `${BASE_URL}${item.link}`,
   })),
 };
+
+const faqLD =
+  seo.faq && seo.faq.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: seo.faq.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }
+    : null;
+
+const jsonLd = faqLD ? [itemListLD, faqLD] : [itemListLD];
 ---
 
 <BaseLayout
@@ -47,7 +63,7 @@ const itemListLD = {
   description={description}
   canonical={canonical}
   ogImage={ogImage}
-  jsonLdExtra={[itemListLD]}
+  jsonLdExtra={jsonLd}
 >
   <Header page="technics" />
   <Strip categoryName={category.name} categoryUrl={`/technics/${category.urlSlug}.html`} />
@@ -66,6 +82,38 @@ const itemListLD = {
           </div>
         </div>
         <Catalog client:visible categories={[category]} showFilters={false} />
+      </div>
+    </section>
+
+    <section class="specs-compare">
+      <div class="container">
+        <h2>Характеристики и цены: аренда {seo.genitive} в СПб и Ленобласти</h2>
+        <div class="table-responsive">
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Техника</th>
+                {category.properties.map((p) => <th>{propertyLabels[p]}</th>)}
+                <th>Цена за смену</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                category.items.map((item) => (
+                  <tr>
+                    <td>
+                      <a href={item.link}>{item.title}</a>
+                    </td>
+                    {category.properties.map((p) => (
+                      <td>{item.props[p] ?? '—'}</td>
+                    ))}
+                    <td>от {item.price.toLocaleString('ru-RU')}&nbsp;₽</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
@@ -101,9 +149,41 @@ const itemListLD = {
               </p>
             )
           }
+          {
+            seo.articles && seo.articles.length > 0 && (
+              <p class="seo-text__related">
+                Полезные статьи:{' '}
+                {seo.articles.map((a, i) => (
+                  <>
+                    {i > 0 && ', '}
+                    <a href={a.href}>{a.label}</a>
+                  </>
+                ))}
+                .
+              </p>
+            )
+          }
         </div>
       </div>
     </section>
+
+    {
+      faqLD && (
+        <section class="faq">
+          <div class="container">
+            <h2 class="info__title text-center">Частые вопросы об аренде {seo.genitive}</h2>
+            <div class="faq__list">
+              {seo.faq.map((f) => (
+                <details class="faq__item">
+                  <summary>{f.q}</summary>
+                  <p>{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
   </main>
 
   <Footer showModal={true} />
