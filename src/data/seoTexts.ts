@@ -525,6 +525,10 @@ export const categorySeo: Record<string, CategorySeoText> = {
     ],
     articles: [
       {
+        href: '/articles/arenda-dorozhnogo-katka.html',
+        label: 'уплотнение грунта: как выбрать каток',
+      },
+      {
         href: '/articles/arenda-spectehniki-s-operatorom.html',
         label: 'аренда спецтехники с оператором',
       },
@@ -566,6 +570,10 @@ export const categorySeo: Record<string, CategorySeoText> = {
       },
     ],
     articles: [
+      {
+        href: '/articles/arenda-dorozhnogo-katka.html',
+        label: 'как выбрать дорожный каток',
+      },
       {
         href: '/articles/arenda-spectehniki-s-operatorom.html',
         label: 'аренда спецтехники с оператором',

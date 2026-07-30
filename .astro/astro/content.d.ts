@@ -148,6 +148,13 @@ declare module 'astro:content' {
   collection: "articles";
   data: InferEntrySchema<"articles">
 } & { render(): Render[".md"] };
+"arenda-dorozhnogo-katka.md": {
+	id: "arenda-dorozhnogo-katka.md";
+  slug: "arenda-dorozhnogo-katka";
+  body: string;
+  collection: "articles";
+  data: InferEntrySchema<"articles">
+} & { render(): Render[".md"] };
 "arenda-frontalnogo-pogruzchika.md": {
 	id: "arenda-frontalnogo-pogruzchika.md";
   slug: "arenda-frontalnogo-pogruzchika";
