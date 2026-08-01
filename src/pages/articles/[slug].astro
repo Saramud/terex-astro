@@ -24,6 +24,7 @@ const articleLD = {
   headline: article.data.title,
   description: article.data.description,
   datePublished: article.data.date.toISOString(),
+  dateModified: (article.data.updatedDate ?? article.data.date).toISOString(),
   inLanguage: 'ru-RU',
   mainEntityOfPage: canonical,
   author: { '@type': 'Organization', name: 'Терекс-Плюс', url: 'https://terex-plus.ru' },
@@ -46,6 +47,7 @@ const dateFmt = article.data.date.toLocaleDateString('ru-RU', {
   description={article.data.description}
   canonical={canonical}
   jsonLdExtra={[articleLD]}
+  ogType="article"
 >
   <Header page="articles" />
   <Strip pageName="Статьи" pageUrl="/articles.html" itemName={article.data.title} />

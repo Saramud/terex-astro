@@ -1,0 +1,4 @@
+# Репозиторий хранит текстовые файлы с LF независимо от core.autocrlf на машине
+# контрибьютора — иначе Windows с autocrlf=true при каждом git add/commit шлёт
+# предупреждения "LF will be replaced by CRLF" на весь проект.
+* text=auto eol=lf
