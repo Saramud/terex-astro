@@ -30,21 +30,23 @@ const localBusinessLD = {
   name: 'Терекс-Плюс',
   image: `${BASE_URL}/img/logo.png`,
   url: BASE_URL,
-  telephone: '+7(921)573-45-02',
+  telephone: '+79215734502',
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Таллинское шоссе, 153/3',
     addressLocality: 'Санкт-Петербург',
+    addressRegion: 'Санкт-Петербург',
+    postalCode: '198205',
     addressCountry: 'RU',
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: '59.8124485',
-    longitude: '30.16469691',
+    latitude: '59.8141542',
+    longitude: '30.1703623',
   },
   description:
     'Компания «Терекс-Плюс» предоставляет в аренду дорожную и строительную технику по Санкт-Петербургу и Ленинградской области',
-  openingHours: ['Mo-Su 00:00-24:00'],
+  openingHours: 'Mo-Su 00:00-23:59',
 };
 
 const organizationLD = {
@@ -56,10 +58,10 @@ const organizationLD = {
   contactPoint: [
     {
       '@type': 'ContactPoint',
-      telephone: '+7(921)573-45-02',
+      telephone: '+79215734502',
       contactType: 'customer service',
       email: 'order@terex-plus.ru',
-      availableLanguage: ['Russian'],
+      availableLanguage: ['ru'],
     },
   ],
 };
@@ -76,12 +78,12 @@ const organizationLD = {
     <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow'} />
     <meta name="google-site-verification" content="gXVs0NLswo4D7iBsL9nx21Zy6MF5UmIT4_nihLKJw_Q" />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     {canonical && <link rel="canonical" href={canonical} />}
     <link rel="preconnect" href="https://mc.yandex.ru" />
+    <link rel="dns-prefetch" href="//yastatic.net" />
 
     <!-- Open Graph -->
     <meta property="og:locale" content="ru_RU" />
